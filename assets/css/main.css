@@ -138,6 +138,12 @@ input, select, textarea {
 		margin: 0 0 0.25em 0;
 	}
 
+	h5 {
+		color: rgb(255, 255, 255);
+		font-size: 2em;
+		margin: 0 0 0.25em 0;
+	}
+
 	strong, b {
 		font-weight: 400;
 		color: #483949;
@@ -1776,6 +1782,20 @@ input, select, textarea {
 		margin: 2.5em 0 0 0;
 	}
 
+/* Video Featured */
+.video.featured {
+	display: block;
+	width: 75%;
+	max-width: 1400px;  /* Adjust this value to match your container's width */
+	margin: 0 auto 4em; /* Top: 0, Centered horizontally, Bottom: 4em */
+  }
+  
+  .video.featured video {
+	display: block;
+	width: 100%;
+	height: auto;
+  }
+
 /* Image */
 
 	.image {
@@ -2055,7 +2075,7 @@ input, select, textarea {
 	.button {
 		position: relative;
 		display: inline-block;
-		background: #df7366;
+		background: #da8516;
 		color: #fff;
 		text-align: center;
 		border-radius: 0.5em;
@@ -2077,7 +2097,7 @@ input, select, textarea {
 		button:hover,
 		.button:hover {
 			color: #fff;
-			background: #ef8376;
+			background: #fa9d24;
 		}
 
 		input[type="button"].alt,
@@ -2211,9 +2231,10 @@ input, select, textarea {
 			}
 
 		#header h1 {
-			color: #fff;
+			color: #ff9900;
 			font-size: 3em;
 			line-height: 1em;
+			text-shadow: -8px -8px 20px black, 8px 8px 20px black;
 		}
 
 			#header h1 a {
@@ -2784,6 +2805,13 @@ input, select, textarea {
 			}
 
 		/* Image */
+			.image.custom-size {
+			width: 70%;
+			height: 50%;
+			object-fit: cover; /* Optional: adjusts image display if aspect ratio differs */
+			display: block;
+			margin: 0 auto; /* Centers the image if the container is wider */
+		  }
 
 			.image.featured {
 				margin: 0 0 2em 0;
