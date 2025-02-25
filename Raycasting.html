@@ -54,144 +54,112 @@
         <div class="container">
           <article id="main" class="special">
             <header>
-              <h2><a href="#">Perspective Projection</a></h2>
+              <h2><a>Perspective Projection</a></h2>
               <p>
                 Raycasting from Screenspace to World Coordinate in Perspective
                 Camera Projection.
               </p>
+              <a class="custom-size">
+                <img src="images/Raycast/FullPerspectiveCode.jpg" alt="">
+              </a>
             </header>
-            <a href="#" class="image featured"
-              ><img src="images/pic06.jpg" alt=""
-            /></a>
 
             <section>
               <header>
-                <h3>Ultrices tempor sagittis nisl</h3>
+                <h3>Explanation:</h3>
               </header>
               <p>
-                Nascetur volutpat nibh ullamcorper vivamus at purus. Cursus
-                ultrices porttitor sollicitudin imperdiet at pretium tellus in
-                euismod a integer sodales neque. Nibh quis dui quis mattis eget
-                imperdiet venenatis feugiat.
+                <a class="custom-size">
+                  <img src="images/Raycast/ModelToScreen.jpg" alt="">
+                </a>
+                <br>
+                What we need to do is to do the inverse of the standard transformation from local space to screen space. Following these steps in reverse.
               </p>
               <p>
-                Eleifend auctor turpis magnis sed porta nisl pretium. Aenean
-                suspendisse nulla eget sed etiam parturient orci cursus nibh.
+                <a class="custom-size">
+                  <img src="images/Raycast/NDCExplanation.jpg" alt="">
+                </a>
+                <br>
+                Firstly, we need the correct windowsize and mouse position. We convert the mouse position from screen space to Normalized Device Coordinates (NDC):
+                The x and y values are mapped to the range [-1, 1] where:
+                <br>
+                * -1 represents the left and bottom of the screen.
+                <br>
+                * 1 represents the right and top of the screen.
+                <br>
+                <br>
+                The z-value is set to 1.0f, assuming the ray starts from the far plane in clip space.
+              </p>
+              <p>
+                <a class="custom-size">
+                  <img src="images/Raycast/ProjectionMatrixExplanation.jpg" alt="">
+                </a>
+                <br>
+                We retrieve the active camera to get its projection matrix.
+                We invert the projection matrix to transform our NDC coordinates into view space.
+                The multiplication ndc * invProjectionMatrix gives us the ray direction in view space.
+              </p>
+              <p>
+                Since the transformation uses homogeneous coordinates, we need to divide by the w-component to normalize it.
+              </p>
+
+              <p>
+                <a class="custom-size">
+                  <img src="images/Raycast/ToWorldSpaceExplanation.jpg" alt="">
+                </a>
+                <br>
+                We retrieve the inverse view matrix from the camera, which allows us to transform the ray from view space to world space.
+                The resulting rayWorldSpace4 is a 4D vector, but we only need its 3D position (x, y, z), so we store it in rayWorldSpace.
+              </p>
+
+              <p>
+                The origin of the ray is the camera's position (from).
+                The direction of the ray is calculated by subtracting the camera position from the transformed world-space position (rayWorldSpace).
+                We normalize the direction vector to ensure it's a unit vector.
+              </p>
+
+              <p>
+                Once this is retrieved, we can use this to raycast towards our world.
               </p>
 
               <div class="row">
                 <article class="col-4 col-12-mobile special">
-                  <a href="#" class="image featured"
-                    ><img src="images/pic07.jpg" alt=""
-                  /></a>
                   <header>
-                    <h3><a href="#">Gravida aliquam penatibus</a></h3>
+                    <h3><a href="Navmesh.html">View it in action in my Navmesh tool: </a></h3>
+                    <a href="Navmesh.html" class="image featured"
+                      ><img src="images/NavmeshLogo.jpg" alt=""
+                    /></a>
                   </header>
-                  <p>
-                    Amet nullam fringilla nibh nulla convallis tique ante proin
-                    sociis accumsan lobortis.
-                  </p>
-                </article>
-                <article class="col-4 col-12-mobile special">
-                  <a href="#" class="image featured"
-                    ><img src="images/pic08.jpg" alt=""
-                  /></a>
-                  <header>
-                    <h3><a href="#">Sed quis rhoncus placerat</a></h3>
-                  </header>
-                  <p>
-                    Amet nullam fringilla nibh nulla convallis tique ante proin
-                    sociis accumsan lobortis.
-                  </p>
-                </article>
-                <article class="col-4 col-12-mobile special">
-                  <a href="#" class="image featured"
-                    ><img src="images/pic09.jpg" alt=""
-                  /></a>
-                  <header>
-                    <h3><a href="#">Magna laoreet et aliquam</a></h3>
-                  </header>
-                  <p>
-                    Amet nullam fringilla nibh nulla convallis tique ante proin
-                    sociis accumsan lobortis.
-                  </p>
                 </article>
               </div>
-            </section>
-            <section>
-              <header>
-                <h3>Augue euismod feugiat tempus</h3>
-              </header>
-              <p>
-                Pretium tellus in euismod a integer sodales neque. Nibh quis dui
-                quis mattis eget imperdiet venenatis feugiat.
-              </p>
             </section>
           </article>
           <hr />
           <article id="main" class="special">
             <header>
-              <h2><a href="#">Ortographic Projection</a></h2>
+              <h2><a>Ortographic Projection</a></h2>
               <p>
                 Raycasting from Screenspace to World Coordinate in Ortographic
                 Camera Projection.
               </p>
+            <a class="custom-size">
+              <img src="images/Raycast/FullPerspectiveCode.jpg" alt="">
+            </a>
+          </header>
+
+          <section>
+            <header>
+              <h3>Explanation:</h3>
             </header>
-            <a href="#" class="image featured"
-              ><img src="images/pic06.jpg" alt=""
-            /></a>
-
-            <section>
-              <header>
-                <h3>Ultrices tempor sagittis nisl</h3>
-              </header>
-              <p>
-                Nascetur volutpat nibh ullamcorper vivamus at purus. Cursus
-                ultrices porttitor sollicitudin imperdiet at pretium tellus in
-                euismod a integer sodales neque. Nibh quis dui quis mattis eget
-                imperdiet venenatis feugiat.
-              </p>
-              <p>
-                Eleifend auctor turpis magnis sed porta nisl pretium. Aenean
-                suspendisse nulla eget sed etiam parturient orci cursus nibh.
-              </p>
-
-              <div class="row">
-                <article class="col-4 col-12-mobile special">
-                  <a href="#" class="image featured"
-                    ><img src="images/pic07.jpg" alt=""
-                  /></a>
-                  <header>
-                    <h3><a href="#">Gravida aliquam penatibus</a></h3>
-                  </header>
-                  <p>
-                    Amet nullam fringilla nibh nulla convallis tique ante proin
-                    sociis accumsan lobortis.
-                  </p>
-                </article>
-                <article class="col-4 col-12-mobile special">
-                  <a href="#" class="image featured"
-                    ><img src="images/pic08.jpg" alt=""
-                  /></a>
-                  <header>
-                    <h3><a href="#">Sed quis rhoncus placerat</a></h3>
-                  </header>
-                  <p>
-                    Amet nullam fringilla nibh nulla convallis tique ante proin
-                    sociis accumsan lobortis.
-                  </p>
-                </article>
-                <article class="col-4 col-12-mobile special">
-                  <a href="#" class="image featured"
-                    ><img src="images/pic09.jpg" alt=""
-                  /></a>
-                  <header>
-                    <h3><a href="#">Magna laoreet et aliquam</a></h3>
-                  </header>
-                  <p>
-                    Amet nullam fringilla nibh nulla convallis tique ante proin
-                    sociis accumsan lobortis.
-                  </p>
+            <p>
+              <a class="custom-size">
+                <img src="images/Raycast/OrtographicExplanation.jpg" alt="">
+              </a>
+              <br>
+              Raycasting in Orthographic Projection simplifies calculations because the near and far planes are the same size. 
+              Unlike perspective projection, objects remain the same size regardless of their distance from the camera, and rays do not converge but remain parallel.
+              The ray's direction is always the camera's forward vector, while the ray's origin is offset based on the calculated NDC values, ensuring the ray starts at the correct position in world space.
+            </p>
                 </article>
               </div>
             </section>

@@ -52,6 +52,8 @@
       <!-- Main -->
       <div class="wrapper style1">
         <div class="container">
+          <div class="row gtr-200">
+          </div>
           <article id="main" class="special">
             <header>
               <p>
@@ -59,71 +61,69 @@
                 via Recast Library.
               </p>
             </header>
-            <a href="#" class="image featured"
-              ><img src="images/pic06.jpg" alt=""
-            /></a>
 
             <section>
               <header>
-                <h3>Ultrices tempor sagittis nisl</h3>
+                <h3>Navmesh Creation Tool for Our Game Engine</h3>
               </header>
               <p>
-                Nascetur volutpat nibh ullamcorper vivamus at purus. Cursus
-                ultrices porttitor sollicitudin imperdiet at pretium tellus in
-                euismod a integer sodales neque. Nibh quis dui quis mattis eget
-                imperdiet venenatis feugiat.
+                Our Navmesh Creation Tool is designed to generate navigation meshes within our game engine, integrating Recast Library to create and manage navigable surfaces. 
+                The tool allows us to import and regenerate a navmesh from FBX or OBJ files while maintaining the same parameters and processing techniques that Recast uses.
               </p>
               <p>
-                Eleifend auctor turpis magnis sed porta nisl pretium. Aenean
-                suspendisse nulla eget sed etiam parturient orci cursus nibh.
+                By leveraging this tool, we can ensure dynamic and efficient navigation for AI-controlled characters while optimizing performance.
+              </p>
+              <header>
+                <h3><a>Understanding the Navmesh Representations</a></h3>
+              </header>
+              <p>
+                Our system utilizes two different types of navmeshes:
               </p>
 
               <div class="row">
-                <article class="col-4 col-12-mobile special">
-                  <a href="#" class="image featured"
-                    ><img src="images/pic07.jpg" alt=""
-                  /></a>
+                <article class="col-8 col-12-mobile special">
                   <header>
-                    <h3><a href="#">Gravida aliquam penatibus</a></h3>
+                    <h3><a>Polymesh (Simplified Navmesh)</a></h3>
                   </header>
+                  <a class="image featured"
+                    ><img src="images/Navmesh/NavmeshPoly.jpg" alt=""
+                  />
                   <p>
-                    Amet nullam fringilla nibh nulla convallis tique ante proin
-                    sociis accumsan lobortis.
+                    Optimized for efficient pathfinding.
+                  </p></a>
+                  <p>
+                    The Polymesh is a lower-detail version of the navmesh, created by simplifying the Detailed Navmesh into a more optimized convex polygon representation.
+                    This representation is lighter and better suited for AI pathfinding, reducing computational overhead.
+                    Our pathfinding logic operates on this version, allowing AI to efficiently calculate paths through the game world.
                   </p>
                 </article>
-                <article class="col-4 col-12-mobile special">
-                  <a href="#" class="image featured"
-                    ><img src="images/pic08.jpg" alt=""
-                  /></a>
+                <article class="col-8 col-12-mobile special">
                   <header>
-                    <h3><a href="#">Sed quis rhoncus placerat</a></h3>
+                    <h3><a >Detailed Navmesh</a></h3>
                   </header>
+                  <a class="image featured"
+                    ><img src="images/Navmesh/NavmeshDetailed.jpg" alt=""
+                  />
                   <p>
-                    Amet nullam fringilla nibh nulla convallis tique ante proin
-                    sociis accumsan lobortis.
-                  </p>
-                </article>
-                <article class="col-4 col-12-mobile special">
-                  <a href="#" class="image featured"
-                    ><img src="images/pic09.jpg" alt=""
-                  /></a>
-                  <header>
-                    <h3><a href="#">Magna laoreet et aliquam</a></h3>
-                  </header>
+                    Provides precise height information.
+                  </p></a>
                   <p>
-                    Amet nullam fringilla nibh nulla convallis tique ante proin
-                    sociis accumsan lobortis.
+                    The Detailed Navmesh preserves fine-grained height variations, which allows for smooth movement adaptation to the terrain.
+                    This is crucial for getting the Y (vertical) position of characters to ensure they remain aligned with the actual walkable surface.
+                    It consists of high-resolution triangles that closely match the original geometry.
                   </p>
                 </article>
               </div>
             </section>
             <section>
               <header>
-                <h3>Augue euismod feugiat tempus</h3>
+                <h3>How We Use Both Representations</h3>
               </header>
               <p>
-                Pretium tellus in euismod a integer sodales neque. Nibh quis dui
-                quis mattis eget imperdiet venenatis feugiat.
+                Character Y-Positioning: Since the Polymesh lacks height precision, we retrieve the Y-coordinate from the Detailed Navmesh.
+                <br>
+                <br>
+                Pathfinding: Player & AI agents use the Polymesh for fast navigation while maintaining proper height alignment using the Detailed Navmesh.
               </p>
             </section>
           </article>
