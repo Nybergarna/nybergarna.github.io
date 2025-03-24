@@ -60,75 +60,37 @@
                 Platforms.
               </p>
             </header>
-            <a class="video featured">
-              <video controls poster="images/2DCollisionLogo.jpg">
-                <source src="videos/2DCollision1.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video></a
-            >
-            <section>
-              <header>
-                <h3>Ultrices tempor sagittis nisl</h3>
-              </header>
-              <p>
-                Nascetur volutpat nibh ullamcorper vivamus at purus. Cursus
-                ultrices porttitor sollicitudin imperdiet at pretium tellus in
-                euismod a integer sodales neque. Nibh quis dui quis mattis eget
-                imperdiet venenatis feugiat.
-              </p>
-              <p>
-                Eleifend auctor turpis magnis sed porta nisl pretium. Aenean
-                suspendisse nulla eget sed etiam parturient orci cursus nibh.
-              </p>
-
-              <div class="row">
-                <article class="col-4 col-12-mobile special">
-                  <a href="#" class="image featured"
-                    ><img src="images/pic07.jpg" alt=""
-                  /></a>
-                  <header>
-                    <h3><a href="#">Gravida aliquam penatibus</a></h3>
-                  </header>
-                  <p>
-                    Amet nullam fringilla nibh nulla convallis tique ante proin
-                    sociis accumsan lobortis.
-                  </p>
-                </article>
-                <article class="col-4 col-12-mobile special">
-                  <a href="#" class="image featured"
-                    ><img src="images/pic08.jpg" alt=""
-                  /></a>
-                  <header>
-                    <h3><a href="#">Sed quis rhoncus placerat</a></h3>
-                  </header>
-                  <p>
-                    Amet nullam fringilla nibh nulla convallis tique ante proin
-                    sociis accumsan lobortis.
-                  </p>
-                </article>
-                <article class="col-4 col-12-mobile special">
-                  <a href="#" class="image featured"
-                    ><img src="images/pic09.jpg" alt=""
-                  /></a>
-                  <header>
-                    <h3><a href="#">Magna laoreet et aliquam</a></h3>
-                  </header>
-                  <p>
-                    Amet nullam fringilla nibh nulla convallis tique ante proin
-                    sociis accumsan lobortis.
-                  </p>
-                </article>
-              </div>
-            </section>
-            <section>
-              <header>
-                <h3>Augue euismod feugiat tempus</h3>
-              </header>
-              <p>
-                Pretium tellus in euismod a integer sodales neque. Nibh quis dui
-                quis mattis eget imperdiet venenatis feugiat.
-              </p>
-            </section>
+            <a href="#" class="image featured"
+              ><img src="videos/2DCollision_GIF.gif" alt=""
+            /></a>
+            <p>
+              <h3>Handle Side Collision</h3>
+              This function determines from which side the player collided with
+              an object. It calculates how far the player has overlapped from
+              each side (top, bottom, left, right). It picks the smallest
+              overlap to decide the direction of collision. Based on the result,
+              it sets either the horizontal or vertical collision direction and
+              stores the penetration distance in a list.
+              <br>
+              <br>
+              The overlap is calculated from all sides (left, right, top,
+              bottom) and the smallest of those values is chosen — the
+              direction where the player is least inside the object. That’s the
+              side where the collision happened. This requires high framerate and is not safe for lag spikes but had great functionality in our 2D platform game.
+              <br>  <br>
+              <a class="image featured"
+                ><img src="images/CollisionHandler.PNG" alt=""
+                /></a>
+                The data from HandleSideCollision is then used to push the
+                player out of the object. It picks the smallest overlap from each
+                direction. A small offset is used to ensure the player doesn't get
+                stuck on the surface (avoiding edge cases). The player's position
+                is then adjusted opposite the direction of collision.
+              <br><br>
+              <a class="image featured"
+              ><img src="images/CollisionPush.PNG" alt=""
+              /></a>
+            </p>
           </article>
         </div>
       </div>
