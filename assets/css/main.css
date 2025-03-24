@@ -83,8 +83,8 @@ input, select, textarea {
 	}
 
 	body {
-		background: #f0f4f4;
-		color: #5b5b5b;
+		background: #000000;
+		color: #ffffff;
 		font-size: 15pt;
 		line-height: 1.85em;
 		font-family: 'Source Sans Pro', sans-serif;
@@ -111,7 +111,7 @@ input, select, textarea {
 
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: 400;
-		color: #483949;
+		color: #ffffff;
 		line-height: 1.25em;
 	}
 
@@ -2183,7 +2183,7 @@ input, select, textarea {
 /* Wrapper */
 
 	.wrapper {
-		background: #fff;
+		background: #000000;
 		margin: 0 0 2em 0;
 		padding: 6em 0 6em 0;
 	}
@@ -2200,7 +2200,7 @@ input, select, textarea {
 		background-size: cover;
 		background-position: center center;
 		background-attachment: fixed;
-		color: #fff;
+		color: #ffffff;
 		text-align: center;
 		padding: 7.5em 0 2em 0;
 		cursor: default;
@@ -2429,7 +2429,7 @@ input, select, textarea {
 /* Banner */
 
 	#banner {
-		background: #fff;
+		background: #000000;
 		text-align: center;
 		padding: 4.5em 0 4.5em 0;
 		margin-bottom: 0;
@@ -2547,7 +2547,7 @@ input, select, textarea {
 				width: 6em;
 				height: 6em;
 				border-radius: 100%;
-				background-color: rgba(72, 57, 73, 0.5);
+				background-color: rgba(153, 153, 153, 0.5);
 				position: absolute;
 				top: 50%;
 				margin-top: -3em;
@@ -2611,7 +2611,7 @@ input, select, textarea {
 		.carousel article {
 			display: inline-block;
 			width: 18em;
-			background: #fff;
+			background: rgba(153, 153, 153, 0.5);
 			text-align: center;
 			padding: 0 1em 3em 1em;
 			margin: 0 2em 0 0;
@@ -2700,6 +2700,7 @@ input, select, textarea {
 		/* Banner */
 
 			#banner {
+				background: #000000;
 				padding-left: 2em;
 				padding-right: 2em;
 			}
@@ -2707,6 +2708,7 @@ input, select, textarea {
 		/* Footer */
 
 			#footer {
+				background: #1a1a1a;
 				padding-left: 2em;
 				padding-right: 2em;
 			}
@@ -2765,6 +2767,7 @@ input, select, textarea {
 		/* Basic */
 
 			html, body {
+				background-color: #000000;
 				overflow-x: hidden;
 			}
 

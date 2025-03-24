@@ -178,21 +178,39 @@
         <article id="main" class="container special">
           <header>
             <h2><a href="#">Specialisering</a></h2>
-            <p>Iterative Deepening A* Goal-Oriented-Action-Planner</p>
+            <p>RTS-style AI using Goal-Oriented-Action-Planner</p>
             <a href="#" class="image featured"
-              ><img src="images/pic06.jpg" alt=""
+              ><img src="videos/GOAP_Videos/Overall_GOAP_GIF.gif" alt=""
             /></a>
           </header>
           <p>
-            IDA* GOAP är en AI-planeringsmetod som kombinerar Iterative
-            Deepening A (IDA*) och Goal-Oriented Action Planning (GOAP) för att
-            effektivt skapa handlingsplaner för AI-enheter i spel. GOAP låter AI
-            sätta upp mål och generera sekvenser av handlingar för att uppnå
-            dem, medan IDA* används för att hitta den mest effektiva vägen genom
-            att iterativt fördjupa sökningen baserat på en heuristisk
-            kostnadsfunktion.
+            For my specialisation, I developed an RTS-style AI inspired by Age of Empires. 
+            The core system revolves around a base controlled by a custom Goal-Oriented Action Planning (GOAP) system, supported by a heuristic-driven ActionPlanner. 
+            This planner evaluates potential actions up to a fixed depth, ignoring paths that exceed the estimated cost to a goal state.
+            <p>
+            The base uses world state data—resources, unit counts, and population cap—to dynamically determine optimal action sequences. 
+            Each action is weighted based on contextual value, allowing the system to prioritize high-impact decisions with lower heuristic costs.
           </p>
+            <p>
+              Idle farmer units receive these plans and carry them out using A*-influenced steering. 
+              Rather than full pathfinding, they evaluate available grid steps based on distance to target and enemy heat influence.
+            </p>
+            <p>
+            Soldiers use a similar method, gravitating toward areas of high enemy presence without overlapping allied units. 
+            In the absence of enemies, they shift toward the edges of farmer influence, creating an emergent patrol behavior.
+          </p>
+            <p>
+            Goblins exhibit randomized wandering by selecting steps from a shuffled list and avoiding previously visited tiles. 
+            They prefer tiles with low soldier presence, or alternatively, high farmer influence—resulting in dynamic, unpredictable movement patterns.
+          </p>
+            The game world is grid-based, with procedurally placed resources and a centrally spawned base. This procedural layout ensures varied outcomes in each simulation run.
+            <p>
+            The architecture uses a simple entity system where all actors and objects inherit from a common base class. 
+            Rendering is optimized via sprite batching, and UI elements are included to provide visual clarity and feedback.  
+          </p>
+          <h2><a href="GOAP.html">READ MORE</a></h2>
         </article>
+        </div>
       </div>
 
       <!-- Footer -->
