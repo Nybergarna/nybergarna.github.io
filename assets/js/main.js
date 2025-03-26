@@ -19,6 +19,11 @@
 
 		};
 
+		document.addEventListener("DOMContentLoaded", function() {
+			// Initialize highlight.js for all code blocks
+			hljs.highlightAll();
+		  });
+		  
 	// Breakpoints.
 		breakpoints({
 			wide:      [ '1281px',  '1680px' ],

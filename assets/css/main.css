@@ -25,6 +25,17 @@ section, summary, time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;}
 
+	/* Custom styling for code blocks */
+pre code {
+	font-family: Consolas, "Courier New", monospace;
+	font-size: 14px;
+	background-color: #1e1e1e; /* Adjust to your desired Visual Studio dark theme look */
+	color: #d4d4d4;
+	padding: 1em;
+	border-radius: 4px;
+	overflow-x: auto; /* Ensures long lines scroll horizontally */
+  }
+  
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
