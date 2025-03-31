@@ -157,7 +157,7 @@ input, select, textarea {
 
 	strong, b {
 		font-weight: 400;
-		color: #483949;
+		color: #ff9e44;
 	}
 
 	em, i {
@@ -2087,7 +2087,7 @@ input, select, textarea {
 		position: relative;
 		display: inline-block;
 		background: #da8516;
-		color: #fff;
+		color: #000000;
 		text-align: center;
 		border-radius: 0.5em;
 		text-decoration: none;
@@ -2095,7 +2095,7 @@ input, select, textarea {
 		border: 0;
 		cursor: pointer;
 		outline: 0;
-		font-weight: 300;
+		font-weight: 700;
 		-moz-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
 		-webkit-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
 		-ms-transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
