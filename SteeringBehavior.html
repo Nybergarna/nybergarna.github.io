@@ -52,19 +52,13 @@
       <div class="wrapper style1">
         <div class="container">
           <article id="main" class="special">
-            <header>
-              <p>
+              <p style="font-size: 1.5rem;">
                 My enemy AI is built around a
                 <strong>Behavior Tree system</strong> that handles
                 decision-making for all enemy types. For movement, I rely on a
                 variety of <strong>Steering Behaviors</strong> to create smooth
                 and dynamic motion across the environment.
               </p>
-            </header>
-
-            <a href="#" class="image featured">
-              <img src="images/pic06.jpg" alt="Enemy Overview Image" />
-            </a>
 
             <section>
               <header>
@@ -125,6 +119,20 @@
                 close to the defense point, they perform a final lunge to damage
                 the target, <strong>sacrificing themselves</strong> in the
                 process.
+                <div class="row">
+                  <article class="col-6 col-12-mobile special">
+                    <a class="image featured">
+                      <img src="videos/Enemy/GroundEnemyVisualisation_GIF.gif" alt="Ground Enemy Visualisation" />
+                      <p><strong>Ground Enemy Logic in Action</strong></p>
+                    </a>
+                  </article>
+                  <article class="col-6 col-12-mobile special">
+                    <a class="image featured">
+                      <img src="videos/Enemy/GroundDrillKilling_GIF.gif" alt="Ground Drill Kill Attack" />
+                      <p><strong>Lunging to destroy the drill</strong></p>
+                    </a>
+                  </article>
+                </div>
               </p>
 
               <h3>Flying Shooter</h3>
@@ -135,6 +143,20 @@
                 it engages immediately. If the player hides, it searches the
                 <strong>last known location</strong> for a limited time before
                 resuming its path toward the defense point.
+                <div class="row">
+                  <article class="col-6 col-12-mobile special">
+                    <a class="image featured">
+                      <img src="videos/Enemy/ShooterVisualisation_GIF.gif" alt="Shooter Visualisation" />
+                      <p><strong>Shooter movement and aiming logic</strong></p>
+                    </a>
+                  </article>
+                  <article class="col-6 col-12-mobile special">
+                    <a class="image featured">
+                      <img src="videos/Enemy/ShooterDrillKilling_GIF.gif" alt="Shooter Debugging" />
+                      <p><strong>Orbiting to destroy drill</strong></p>
+                    </a>
+                  </article>
+                </div>
               </p>
 
               <h3>Flying Kamikaze</h3>
@@ -142,6 +164,29 @@
                 A drone-type enemy that seeks out the player or a defense point
                 and <strong>explodes on impact</strong>. It uses the same
                 visibility system as the shooter to determine when to engage.
+                <div class="row">
+                  <article class="col-6 col-12-mobile special">
+                    <a class="image featured">
+                      <img src="videos/Enemy/KamikazeVisualisation_GIF.gif" alt="Kamikaze Visualisation" />
+                      <p><strong>Kamikaze Swarm visualization</strong></p>
+                    </a>
+                  </article>
+                  <article class="col-6 col-12-mobile special">
+                    <a class="image featured">
+                      <img src="videos/Enemy/KamikazeDrillKilling_GIF.gif" alt="Kamikaze Drill Kill" />
+                      <p><strong>Explosion impact on defense targets</strong></p>
+                    </a>
+                  </article>
+                </div>
+                
+                <div class="row">
+                  <article class="col-6 col-12-mobile special">
+                    <a class="image featured">
+                      <img src="videos/Enemy/KamikazeSwarmLargeGIF.gif" alt="Kamikaze Swarm Movement" />
+                      <p><strong>Kamikaze with different parameters</strong></p>
+                    </a>
+                  </article>
+                </div>
               </p>
             </section>
 
@@ -168,6 +213,28 @@
                 I’ve implemented several tools to help visualize and debug enemy
                 behavior in real-time:
               </p>
+              <div class="row">
+                <article class="col-6 col-12-mobile special">
+                  <a class="image featured">
+                    <img src="videos/Enemy/GroundDebug_GIF.gif" alt="Ground Debug Visualisation" />
+                    <p><strong>Debug view of Ground Enemy</strong></p>
+                  </a>
+                </article>
+
+                <article class="col-6 col-12-mobile special">
+                  <a class="image featured">
+                    <img src="videos/Enemy/KamikazeRaySteeringGIF.gif" alt="Ray-Based Steering" />
+                    <p><strong>Object Separation Steering in use with debug rays</strong></p>
+                  </a>
+                </article>
+
+                <article class="col-6 col-12-mobile special">
+                  <a class="image featured">
+                    <img src="videos/Enemy/AllSteeringRaysGIF.gif" alt="Ray-Based Steering" />
+                    <p><strong>All Steering Ray presets added</strong></p>
+                  </a>
+                </article>
+              </div>
 
               <h3>Path Rendering</h3>
               <p>

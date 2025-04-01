@@ -49,30 +49,62 @@
         </nav>
       </div>
 
-      <!-- Main -->
-      <div class="wrapper style1">
-        <div class="container">
-          <div class="row gtr-200"></div>
-          <article id="main" class="special">
-            <header>
-              <p>
-                Player Class implementation in a 2D Elevated Grid World. Using
-                Screenspace Raycast for movement & aiming directions.
-              </p>
-            </header>
-            <a class="video featured">
-              <video controls poster="images/PlayerMovementLogo.jpg">
-                <source
-                  src="SpecialiseringsBilder/2DCollision1.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video></a
-            >
-            <button onclick="history.back()">Go Back</button>
-          </article>
-        </div>
+     <!-- Main -->
+<div class="wrapper style1">
+  <div class="container">
+    <div class="row gtr-200"></div>
+    <article id="main" class="special">
+      <header>
+        <p>
+          Player Class implementation in a 2D Elevated Grid World. Using
+          Screenspace Raycast for movement & aiming directions.
+        </p>
+      </header>
+
+      <div class="row">
+        <article class="col-6 col-12-mobile special">
+          <a class="image featured">
+            <img
+              src="videos/PlayerMovement/PlayerMovement1GIF.gif"
+              alt="Polymesh View"
+            />
+          </a>
+        </article>
+
+        <article class="col-6 col-12-mobile special">
+          <a class="image featured">
+            <img
+              src="videos/PlayerMovement/PlayerMovement2GIF.gif"
+              alt="Detailed Navmesh View"
+            />
+          </a>
+        </article>
       </div>
+
+      <section>
+        <p>
+          For this project, I handled the full player gameplay logic. The movement system is built around directional inputs using WASD, supporting both primary directions and diagonals (e.g., top-right, bottom-left). Aiming is handled using a <strong>screenspace raycasting system</strong>, which I implemented first for a perspective camera and later adapted to orthographic when the project changed direction.
+        </p>
+
+        <p>
+          I created a <strong>Projectile Pool</strong> for performance-efficient ability casting. The player has four weapon types, each managed through an <strong>enum-based state system</strong> to switch behavior and cooldowns cleanly. Ability inputs are context-aware — for example, if the player is rolling, they can't shoot or switch directions until the animation completes.
+        </p>
+
+        <h3>Key Features Implemented:</h3>
+        <ul>
+          <li>Screenspace raycasting (Perspective & Orthographic support)</li>
+          <li>8-direction WASD movement with diagonal support</li>
+          <li>Projectile Pool system for ability reuse</li>
+          <li>Weapon switching via enum state handling</li>
+          <li>Cooldown timers for actions and abilities</li>
+          <li>Input-locking during specific player states (rolling, shooting etc)</li>
+        </ul>
+      </section>
+
+      <button onclick="history.back()">Go Back</button>
+    </article>
+  </div>
+</div>
 
       <!-- Footer -->
       <div id="footer">

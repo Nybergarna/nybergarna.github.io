@@ -59,14 +59,12 @@
               </p>
             </header>
 
-            <section>
-              <a href="#" class="image featured">
-                <img
-                  src="videos/GOAP_Videos/Overall_GOAP_GIF.gif"
-                  alt="Overall GOAP View"
-                />
-              </a>
+            <header>
+              <h3><a href="GOAP.html"><strong>Longer Real-Time Simulation</strong></a></h3>
+            </header>
+            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1071326162?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Specialisering Simulation"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 
+            <section>
               <header>
                 <h3>Planning the Best Action</h3>
               </header>
@@ -237,37 +235,30 @@
               </a>
 
               <header>
-                <h3>Terrain: Sheep Generation</h3>
+                <h3>Terrain Example: Sheep Generation</h3>
               </header>
               <p>
-                This code generates the positions of terrain entities throughout
-                the map while avoiding overlapping from previously positioned
-                entities. This specific example is for sheep.
+                This code generates the positions of terrain entities throughout the map while avoiding overlapping from previously positioned entities. This specific example is for <strong>sheep</strong>.
               </p>
-
+              
               <h4>Mark Exclusion Zones:</h4>
               <p>
-                It loops through nearby entities and marks a grid radius around
-                each one where sheep should not be placed.
+                It loops through nearby entities and marks a <strong>grid radius</strong> around each one where sheep should not be placed.
               </p>
-
+              
               <h4>Generate Possible Positions:</h4>
               <p>
-                It checks tiles around a start position within a set range
-                (iterations), skipping some based on spacing rules (every 2nd,
-                3rd, or 5th tile) to control density.
+                It checks tiles around a <strong>start position</strong> within a set range (iterations), skipping some based on spacing rules (every 2nd, 3rd, or 5th tile) to control <strong>density</strong>.
               </p>
-
+              
               <h4>Filter Valid Tiles:</h4>
               <p>
-                It ensures each position is inside map bounds, is walkable, and
-                not inside an exclusion zone.
+                It ensures each position is inside <strong>map bounds</strong>, is <strong>walkable</strong>, and not inside an <strong>exclusion zone</strong>.
               </p>
-
+              
               <h4>Shuffle the Results:</h4>
               <p>
-                All valid positions are randomly shuffled to allow for
-                non-patterned, natural placement.
+                All valid positions are <strong>randomly shuffled</strong> to allow for non-patterned, natural placement.
               </p>
 
               <a class="image featured">
