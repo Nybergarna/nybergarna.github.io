@@ -250,8 +250,7 @@
               <h3>Steering Rays</h3>
               <p>
                 Visualizes Object Separation rays.
-                <strong>Penetration depth</strong> is color-coded — the deeper a
-                ray hits geometry, the more intense the color.
+                <strong>Penetration depth</strong> is color-coded — the part penetrating a collider changes color.
               </p>
 
               <h3>Parameter Tweaking</h3>
@@ -274,7 +273,7 @@
                 <h2>Behavior Tree</h2>
               </header>
               <p>
-                All enemies use a <strong>Behavior Tree</strong> to make
+                All enemies use a simple <strong>Behavior Tree</strong> to make
                 decisions based on their current situation. This tree handles
                 targeting, attacking, and fallback behaviors depending on what
                 the enemy sees or senses.
@@ -306,9 +305,12 @@
                 The Behavior Tree is built using a <strong>Selector</strong> at
                 the root, which evaluates child <strong>Sequences</strong> in
                 order. Each Sequence contains specific conditions and
-                corresponding actions, ensuring
-                <strong>responsive and layered decision-making</strong>.
+                corresponding actions, ensuring simple but
+                <strong>responsive decision-making</strong>.
               </p>
+                <a class="image small">
+                  <img src="images/Enemy/BehaviorTree.PNG" alt="Behavior Tree" />
+                </a><br>
               <button onclick="history.back()">Go Back</button>
             </section>
           </article>
