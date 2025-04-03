@@ -83,41 +83,52 @@
                 implemented three custom steering techniques that improve my AI
                 movement:
               </p>
-
-              <h3>Object Separation Steering</h3>
-              <p>
-                This behavior uses a series of <strong>short rays</strong> cast
-                in fixed directions from the enemy. These rays interact only
-                with the <strong>environment</strong>, not other enemies. The
-                closer a ray hits an object, the stronger the steering force is
-                applied away from it using a
-                <strong>lerped weighting system</strong>. This helps enemies
-                avoid walls and tight spaces more naturally.
-              </p>
-
-              <h3>Navmesh Edge Steering</h3>
-              <p>
-                Ground enemies are nudged back toward the navmesh path if they
-                start drifting. This is made efficient through a
-                <strong>gridded navmesh layout</strong>, allowing enemies to
-                quickly check if they're veering off course and stay aligned
-                with the walkable areas.
-              </p>
-
-              <h3>Spread Steering</h3>
-              <p>
-                This behavior ensures that enemies don't stack in a straight
-                line by applying horizontal and vertical spacing between them.
-                It creates more <strong>natural formation movement</strong> and
-                reduces crowding.
-              </p>
-
-              <h3>Seek Steering</h3>
-              <p>
-                Seek behavior is used to move toward the next pathfinding point.
-                Once close enough to the target, the enemy increments to the
-                next point in the path.
-              </p>
+              <div class="row">
+                <!-- Left Column: Text -->
+                <div class="col-6 col-12-mobile">
+                  <section>
+                    <h3>Object Separation Steering</h3>
+                    <p>
+                      This behavior uses a series of <strong>short rays</strong> cast in fixed directions from the enemy.
+                      These rays interact only with the <strong>environment</strong>, not other enemies.
+                      The closer a ray hits an object, the stronger the steering force is applied away from it using a
+                      <strong>lerped weighting system</strong>. This helps enemies avoid walls and tight spaces more naturally.
+                    </p>
+              
+                    <h3>Navmesh Edge Steering</h3>
+                    <p>
+                      Ground enemies are nudged back toward the navmesh path if they start drifting.
+                      This is made efficient through a <strong>gridded navmesh layout</strong>, allowing enemies to quickly
+                      check if they're veering off course and stay aligned with the walkable areas.
+                    </p>
+              
+                    <h3>Spread Steering</h3>
+                    <p>
+                      This behavior ensures that enemies don't stack in a straight line by applying horizontal and vertical
+                      spacing between them. It creates more <strong>natural formation movement</strong> and reduces crowding.
+                    </p>
+              
+                    <h3>Seek Steering</h3>
+                    <p>
+                      Seek behavior is used to move toward the next pathfinding point. Once close enough to the target,
+                      the enemy increments to the next point in the path.
+                    </p>
+                  </section>
+                </div>
+              
+                <!-- Right Column: Image -->
+                <div class="col-6 col-12-mobile">
+                  <br>
+                  <h4><strong> Enemy Steering Update</strong></h4>
+                  <span class="image fit">
+                    <img src="images/Enemy/ReturnSteering.png" alt="Visual diagram of steering behaviors" />
+                  </span>
+                  <h4><strong> Object Separation Steering snippet</strong></h4>
+                  <span class="image fit">
+                    <img src="images/Enemy/RaySeparation.png" alt="Visual diagram of steering behaviors" />
+                  </span>
+                </div>
+              </div>
           </section>
 
             <section>
@@ -230,13 +241,13 @@
                 <h2>Enemy Management</h2>
               </header>
 
-              <h3><a href="WaveManager.html">Wave Manager</a></h3>
+              <h3>Wave Manager</h3>
               <p>
                 All enemies are controlled by a centralized
                 <strong>WaveManager</strong>, which manages an
                 <strong>EnemyPool</strong> based on the largest possible wave
                 defined by our level designers’ generated bin files. This
-                ensures <strong>maximum reuse</strong> and efficiency. Read more about it in Wave Manager.
+                ensures <strong>maximum reuse</strong> and efficiency. Read more about it <a href="WaveManager.html"><strong>here</strong></a> in Wave Manager.
               </p>
             </section>
 
@@ -262,52 +273,48 @@
                     <p><strong>Object Separation Steering in use with debug rays</strong></p>
                   </a>
                 </article>
-
-                <article class="col-6 col-12-mobile special">
-                  <a class="image featured">
-                    <img src="images/Enemy/RaySeparation.png" alt="Ray-Based Steering" />
-                    <p><strong>Object Separation Raycasting snippet</strong></p>
-                  </a>
-                </article>
-
-                <article class="col-6 col-12-mobile special">
-                  <a class="image featured">
-                    <img src="videos/Enemy/AllSteeringRaysGIF.gif" alt="Ray-Based Steering" />
-                    <p><strong>All Steering Ray presets added</strong></p>
-                  </a>
-                </article>
               </div>
-
-              <h3>Path Rendering</h3>
-              <p>
-                Displays each enemy’s current path and next target waypoint.
-              </p>
-
-              <h3>Velocity Vectors</h3>
-              <p>
-                Shows the <strong>direction and magnitude</strong> of each
-                enemy’s movement.
-              </p>
-
-              <h3>Steering Rays</h3>
-              <p>
-                Visualizes Object Separation rays.
-                <strong>Penetration depth</strong> is color-coded — the part penetrating a collider changes color.
-              </p>
-
-              <h3>Parameter Tweaking</h3>
-              <p>
-                I can dynamically adjust: <strong>Steering weights</strong>,
-                <strong>Arrival/Separation radius</strong>,
-                <strong>Mass</strong>, <strong>Speed</strong>, and
-                <strong>Max Force</strong>.
-              </p>
-
-              <h3>Ray Presets</h3>
-              <p>
-                I can add or swap steering ray configurations on the fly using
-                defined <strong>presets</strong>.
-              </p>
+              
+              <div class="row">
+                <!-- Left Column: Debug Visualization Text -->
+                <div class="col-6 col-12-mobile">
+                    <h3>Path Rendering</h3>
+                    <p>
+                      Displays each enemy’s current path and next target waypoint.
+                    </p>
+              
+                    <h3>Velocity Vectors</h3>
+                    <p>
+                      Shows the <strong>direction and magnitude</strong> of each enemy’s movement.
+                    </p>
+              
+                    <h3>Steering Rays</h3>
+                    <p>
+                      Visualizes Object Separation rays.
+                      <strong>Penetration depth</strong> is color-coded — the part penetrating a collider changes color.
+                    </p>
+              
+                    <h3>Parameter Tweaking</h3>
+                    <p>
+                      I can dynamically adjust: <strong>Steering weights</strong>,
+                      <strong>Arrival/Separation radius</strong>, <strong>Mass</strong>,
+                      <strong>Speed</strong>, and <strong>Max Force</strong>.
+                    </p>
+              
+                    <h3>Ray Presets</h3>
+                    <p>
+                      I can add or swap steering ray configurations on the fly using defined <strong>presets</strong>.
+                    </p>
+                </div>
+              
+                <!-- Right Column: GIF/Image -->
+                <div class="col-6 col-12-mobile">
+                  <span class="image fit">
+                    <img src="videos/Enemy/AllSteeringRaysGIF.gif" alt="Ray-Based Steering" />
+                    <p style="text-align:center; margin-top: 0.5em;"><strong>All Steering Ray presets added</strong></p>
+                  </span>
+                </div>
+              </div>
             </section>
 
             <section>
@@ -335,38 +342,46 @@
                 the enemy sees or senses.
               </p>
 
-              <h3>Player Visibility Check</h3>
-              <p>
-                The tree first checks if the player is visible. If true, the
-                enemy transitions into an attack behavior using a lunge,
-                shooting, or explosion depending on the enemy type.
-              </p>
-
-              <h3>Static Defense Targeting</h3>
-              <p>
-                If the player isn’t visible, the enemy checks for nearby
-                <strong>static defense targets</strong>. If one is present, the
-                enemy attacks the structure instead.
-              </p>
-
-              <h3>Path Following</h3>
-              <p>
-                If neither the player nor a defense target is visible, the enemy
-                follows its <strong>navmesh path</strong> using steering
-                behaviors until re-engaging.
-              </p>
-
-              <h3>Structure</h3>
-              <p>
-                The Behavior Tree is built using a <strong>Selector</strong> at
-                the root, which evaluates child <strong>Sequences</strong> in
-                order. Each Sequence contains specific conditions and
-                corresponding actions, ensuring simple but
-                <strong>responsive decision-making</strong>.
-              </p>
-                <a class="image small">
-                  <img src="images/Enemy/BehaviorTree.PNG" alt="Behavior Tree" />
-                </a><br>
+              <div class="row">
+                <!-- Left Column: Behavior Tree Text -->
+                <div class="col-6 col-12-mobile">
+                  <section>
+                    <h3>Player Visibility Check</h3>
+                    <p>
+                      The tree first checks if the player is visible. If true, the enemy transitions into an attack behavior using a
+                      lunge, shooting, or explosion depending on the enemy type.
+                    </p>
+              
+                    <h3>Static Defense Targeting</h3>
+                    <p>
+                      If the player isn’t visible, the enemy checks for nearby <strong>static defense targets</strong>. If one is present,
+                      the enemy attacks the structure instead.
+                    </p>
+              
+                    <h3>Path Following</h3>
+                    <p>
+                      If neither the player nor a defense target is visible, the enemy follows its <strong>navmesh path</strong> using
+                      steering behaviors until re-engaging.
+                    </p>
+              
+                    <h3>Structure</h3>
+                    <p>
+                      The Behavior Tree is built using a <strong>Selector</strong> at the root, which evaluates child
+                      <strong>Sequences</strong> in order. Each Sequence contains specific conditions and corresponding actions, ensuring
+                      simple but <strong>responsive decision-making</strong>.
+                    </p>
+                  </section>
+                </div>
+              
+                <!-- Right Column: Image -->
+                <div class="col-6 col-12-mobile">
+                  <br><br>
+                  <span class="image fit">
+                    <img src="images/Enemy/BehaviorTree.PNG" alt="Behavior Tree" />
+                  </span>
+                </div>
+              </div>
+              <br>
               <button onclick="history.back()">Go Back</button>
             </section>
           </article>
