@@ -87,6 +87,8 @@
               combinations dynamically.
             </p>
 
+<section>
+            <header><h2>The Manager</h2></header>
             <h3>Core Functionalities</h3>
             <ul>
               <li>Create and edit Wave Configs for levels</li>
@@ -125,28 +127,49 @@
                 EnemyPool efficiently
               </li>
             </ul>
-            <a href="https://github.com/Hugonyberg/Portfolio/blob/main/WaveManager/WaveManager.h#L2" 
-   target="_blank" 
-   style="display: inline-flex; align-items: center; gap: 8px; padding: 4px 10px; background-color: #ff7b00; color: #000000; text-decoration: none; border-radius: 6px; font-family: sans-serif;">
-  <svg height="20" width="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-    <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 
+            <a
+              href="https://github.com/Hugonyberg/Portfolio/blob/main/WaveManager/WaveManager.h#L2"
+              target="_blank"
+              style="
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 4px 10px;
+                background-color: #ff7b00;
+                color: #000000;
+                text-decoration: none;
+                border-radius: 6px;
+                font-family: sans-serif;
+              "
+            >
+              <svg
+                height="20"
+                width="20"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 
              0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
              -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2
              -3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2
              .82a7.64 7.64 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16
              1.91.08 2.11.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54
-             1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-  </svg>
-  View Enemy Pool on GitHub
-</a>
+             1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                />
+              </svg>
+              View Enemy Pool on GitHub
+            </a>
 
-<br><br>
+            <br /><br />
             <h3>Behind the Scenes</h3>
             <p>
               The Wave Manager not only handles spawning logic, but also serves
-              as a central data provider for enemies through the Enemy Pool. It calculates pathfinding
-              points from every spawn location to all critical targets (like
-              drills) and stores this data in a fast-access map.
+              as a central data provider for enemies through the Enemy Pool. It
+              calculates pathfinding points from every spawn location to all
+              critical targets (like drills) and stores this data in a
+              fast-access map.
             </p>
             <p>
               It also populates the AI <strong>Blackboard</strong> with
@@ -156,43 +179,75 @@
             </p>
 
             <h3>Enemy Pool Integration</h3>
-              <p>
-                The <strong>EnemyPool</strong> works alongside the <strong>Wave Manager</strong> to handle enemy spawning. It allocates memory for all enemies in a wave ahead of time, ensuring that no enemies need to be loaded during gameplay. This guarantees smooth performance and fast spawning.
-              </p>
+            <p>
+              The <strong>EnemyPool</strong> works alongside the
+              <strong>Wave Manager</strong> to handle enemy spawning. It
+              allocates memory for all enemies in a wave ahead of time, ensuring
+              that no enemies need to be loaded during gameplay. This guarantees
+              smooth performance and fast spawning.
+            </p>
 
-              <p>
-                The <strong>TriggerPulse</strong> function in the Wave Manager signals the EnemyPool to spawn enemies in a defined formation, allowing for structured entry into the game area. Each enemy is initialized with a <strong>PhysX body template</strong> and receives its steering behavior setup before the game starts.
-              </p>
+            <p>
+              The <strong>TriggerPulse</strong> function in the Wave Manager
+              signals the EnemyPool to spawn enemies in a defined formation,
+              allowing for structured entry into the game area. Each enemy is
+              initialized with a <strong>PhysX body template</strong> and
+              receives its steering behavior setup before the game starts.
+            </p>
 
-              <h3>Core Functionalities</h3>
+            <h3>Core Functionalities</h3>
             <ul>
-            <li>
-              <strong>Memory Allocation:</strong> Pre-allocates all enemies for a wave to prevent runtime loading
-           </li>
-            <li>
-            <strong>Spawning Logic:</strong> Works with Wave Manager’s TriggerPulse to spawn enemies in formation
-            </li>
-            <li>
-             <strong>Steering Rays:</strong> Sets default behavior via preset parameters
-            </li>
               <li>
-             <strong>ImGui Control Panel:</strong> Provides UI to tweak all enemy-related values.
-           </li>
-          </ul>
-             <a href="https://github.com/Hugonyberg/Portfolio/blob/main/Enemy/EnemyPool.cpp#L8" 
-   target="_blank" 
-   style="display: inline-flex; align-items: center; gap: 8px; padding: 4px 10px; background-color: #ff7b00; color: #000000; text-decoration: none; border-radius: 6px; font-family: sans-serif;">
-  <svg height="20" width="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-    <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 
+                <strong>Memory Allocation:</strong> Pre-allocates all enemies
+                for a wave to prevent runtime loading
+              </li>
+              <li>
+                <strong>Spawning Logic:</strong> Works with Wave Manager’s
+                TriggerPulse to spawn enemies in formation
+              </li>
+              <li>
+                <strong>Steering Rays:</strong> Sets default behavior via preset
+                parameters
+              </li>
+              <li>
+                <strong>ImGui Control Panel:</strong> Provides UI to tweak all
+                enemy-related values.
+              </li>
+            </ul>
+            <a
+              href="https://github.com/Hugonyberg/Portfolio/blob/main/Enemy/EnemyPool.cpp#L8"
+              target="_blank"
+              style="
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 4px 10px;
+                background-color: #ff7b00;
+                color: #000000;
+                text-decoration: none;
+                border-radius: 6px;
+                font-family: sans-serif;
+              "
+            >
+              <svg
+                height="20"
+                width="20"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 
              0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
              -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2
              -3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2
              .82a7.64 7.64 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16
              1.91.08 2.11.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54
-             1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-  </svg>
-  View Enemy Pool on GitHub
-</a><br><br>
+             1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                />
+              </svg>
+              View Enemy Pool on GitHub </a
+            ><br /><br />
             <div class="image-pair">
               <a href="#" class="image-half">
                 <img
@@ -200,8 +255,8 @@
                   alt="WaveManager UI"
                 />
                 <br />
-        <br />
-        <button onclick="history.back()">Go Back</button>
+                <br />
+                <button onclick="history.back()">Go Back</button>
               </a>
               <a href="#" class="image-half">
                 <img
@@ -213,6 +268,7 @@
           </article>
         </div>
       </div>
+    </section>
 
       <!-- Footer -->
       <div id="footer">

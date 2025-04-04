@@ -81,6 +81,73 @@
             </section>
 
             <section>
+              <header><h2>Struggles and What I Learned</h2></header>
+              <p>
+                This was the first time we had to work with a
+                <strong>3D navmesh</strong> in our projects—until now, we had
+                only used simple 2D pathfinding. We had heard from previous
+                students that Unity’s built-in navmesh system could be
+                unreliable, especially when generating complex meshes. Because
+                of that, our group decided to integrate the open-source
+                <strong>Recast library</strong> instead.
+              </p>
+              <p>
+                One of the first major challenges was simply
+                <strong>understanding the Recast library</strong>. It's a large
+                and powerful tool, but it includes far more functionality than
+                we needed. This meant spending a lot of time reading through
+                documentation and examples just to figure out what we could
+                safely ignore. Once I understood the basics, I was able to
+                <strong>integrate the solo mesh generation</strong> into our
+                engine with the help of the Recast demo and some guidance from
+                our teachers.
+              </p>
+              <p>
+                My first real struggle came when I noticed that the
+                <strong>unit system</strong> used by Recast didn’t match our
+                engine. Recast (and most similar libraries) assumes 1 unit
+                equals 1 meter, but our engine uses
+                <strong>centimeters</strong>. This caused strange generation
+                results and long build times, which I initially didn’t
+                understand. After some research, I realized I had to scale all
+                the mesh vertices by <strong>0.01</strong> using a scaling
+                matrix. Once that was done, the navmesh generation became both
+                faster and much more accurate.
+              </p>
+              <p>
+                After getting the mesh generation working properly, I worked
+                closely with my teammate <strong>Thea Nilsson</strong> to design
+                a custom struct that simplified the Recast navmesh into a format
+                we were familiar with. This made it easier for her to implement
+                the <strong>pathfinding logic</strong>, while I focused on data
+                conversion and making the navmesh renderable for debugging. You
+                can see the full structure and usage in my GitHub repository.
+              </p>
+              <p>
+                Another unexpected challenge was the difference between Recast’s
+                <strong>poly mesh</strong> and <strong>detailed mesh</strong>.
+                At first, we only used the poly mesh for pathfinding, which
+                worked well in terms of navigation. However, we ran into issues
+                with <strong>inaccurate height data</strong>—in some places, it
+                looked fine, but in others it caused visual glitches for the
+                enemies and player. Without access to a physics system, I had to
+                dig deeper into Recast and eventually integrated the detailed
+                mesh data into our system. That gave us far better results, and
+                Thea was then able to extract more accurate height information
+                for the player character and AI.
+              </p>
+              <p>
+                Overall, I’ve learned a lot about working with
+                <strong>large external libraries</strong>, how to identify and
+                isolate the parts you need, and how to
+                <strong>debug complex systems</strong> like navmesh generation
+                by rendering and visual feedback. This experience gave me a much
+                deeper understanding of how navmesh systems really work under
+                the hood.
+              </p>
+            </section>
+
+            <section>
               <header>
                 <h2>Understanding the Navmesh Representations</h2>
               </header>
@@ -146,20 +213,40 @@
                 Polymesh for fast navigation while maintaining proper height
                 alignment using the Detailed Navmesh.
               </p>
-              <a href="https://github.com/Hugonyberg/Portfolio/blob/main/Navmesh/NavmeshCreationTool.cpp#L941" 
-   target="_blank" 
-   style="display: inline-flex; align-items: center; gap: 8px; padding: 4px 10px; background-color: #ff7b00; color: #000000; text-decoration: none; border-radius: 6px; font-family: sans-serif;">
-  <svg height="20" width="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-    <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 
+              <a
+                href="https://github.com/Hugonyberg/Portfolio/blob/main/Navmesh/NavmeshCreationTool.cpp#L941"
+                target="_blank"
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+                  padding: 4px 10px;
+                  background-color: #ff7b00;
+                  color: #000000;
+                  text-decoration: none;
+                  border-radius: 6px;
+                  font-family: sans-serif;
+                "
+              >
+                <svg
+                  height="20"
+                  width="20"
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 
              0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
              -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2
              -3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2
              .82a7.64 7.64 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16
              1.91.08 2.11.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54
-             1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-  </svg>
-  View my Navmesh Creation Tool on GitHub
-</a>
+             1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                  />
+                </svg>
+                View my Navmesh Creation Tool on GitHub
+              </a>
             </section>
 
             <section>

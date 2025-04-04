@@ -60,11 +60,145 @@
             </header>
 
             <header>
-              <h3><a href="GOAP.html"><strong>Longer Real-Time Simulation</strong></a></h3>
+              <h3>
+                <a href="GOAP.html"
+                  ><strong>Longer Real-Time Simulation</strong></a
+                >
+              </h3>
             </header>
-            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1071326162?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Specialisering Simulation"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            <div style="padding: 56.25% 0 0 0; position: relative">
+              <iframe
+                src="https://player.vimeo.com/video/1071326162?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                style="
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                "
+                title="Specialisering Simulation"
+              ></iframe>
+            </div>
+            <script src="https://player.vimeo.com/api/player.js"></script>
 
             <section>
+              <header><h2>Struggles and What I Learned</h2></header>
+              <h3>Finding the Right Focus</h3>
+              <p>
+                One of the first challenges I faced was deciding what part of
+                game AI I wanted to explore. I knew I wanted to work with
+                <strong>AI systems in games</strong>, but I struggled to find
+                something that felt both complex and meaningful. I initially
+                came across the
+                <strong>Iterative Deepening A*</strong> algorithm and was
+                fascinated by how it differs from regular A*—it uses
+                significantly <strong>less memory</strong>, which makes it a
+                powerful tool in large data spaces with many actions, paths, or
+                tasks. The idea of building an AI planner that could work in a
+                sea of data and still find the optimal goal path really appealed
+                to me.
+              </p>
+              <p>
+                However, the <strong>performance trade-offs</strong> became a
+                problem. The algorithm restarts its search whenever it exceeds
+                the current cost threshold, which added too much overhead for my
+                use case in a real-time game. I ended up modifying it, steering
+                the algorithm early on with a
+                <strong>manipulated cost function</strong> to find quicker paths
+                and skipping the repeated cutoff logic. This experience taught
+                me a lot about <strong>algorithm design</strong> and how even
+                small tweaks can drastically affect performance and behavior.
+              </p>
+
+              <h3>Creating the Game World</h3>
+              <p>
+                Because I decided to build an
+                <strong>RTS-style game</strong> around the GOAP system, I needed
+                assets that matched the idea. I found a free pixel art library
+                by
+                <style>
+                  a.styled-link {
+                    color: #1e90ff;
+                    text-decoration: none;
+                    border-bottom: 1px solid transparent;
+                    transition: all 0.2s ease-in-out;
+                  }
+
+                  a.styled-link:hover {
+                    border-bottom: 1px solid #1e90ff;
+                  }
+                </style>
+
+                <a
+                  href="https://pixelfrog-assets.itch.io/tiny-swords"
+                  target="_blank"
+                  class="styled-link"
+                >
+                  Pixel Frog </a
+                >, which was perfect for giving the project a stylized look. At
+                the same time, building this game involved more than just the
+                GOAP logic—I also had to handle
+                <strong>terrain generation</strong>,
+                <strong>rendering systems</strong>, and a range of behaviors
+                unrelated to my AI focus.
+              </p>
+              <p>
+                Thankfully, I managed to implement the action planner fairly
+                quickly. Once I had a working structure for
+                <strong>actions, goals, and costs</strong>, I had enough time to
+                expand the project. In many cases, I reused knowledge from
+                previous projects—like <strong>grids, pathfinding,</strong> and
+                <strong>procedural generation</strong>. But I also had to create
+                new systems from scratch, like a simple
+                <strong>entity inheritance system</strong> and rules for
+                <strong>synchronized behaviors</strong>.
+              </p>
+
+              <h3>AI Coordination</h3>
+              <p>
+                One of my favorite challenges was coordinating different AI
+                roles—<strong>farmers, guards,</strong> and
+                <strong>goblins</strong>. I wanted farmers to act based on the
+                GOAP system, focusing on their tasks while avoiding danger.
+                Guards needed to protect them dynamically, while goblins would
+                target unprotected farmers. This led me to explore concepts like
+                <strong>influence maps</strong> and heat-based grid scoring.
+              </p>
+              <p>
+                I developed a system where each entity would scan nearby grid
+                tiles and sort them based on a combination of
+                <strong>influence values</strong> and
+                <strong>distance to goal</strong>. This created more believable
+                movement and less rigid behavior. It also had a positive impact
+                on <strong>performance</strong>, since not every agent had to
+                run a full pathfinding routine at every step. Instead, entities
+                appeared to explore their surroundings more naturally.
+              </p>
+
+              <h3>Final Takeaways</h3>
+              <p>
+                In the end, I had essentially created my own small simulation
+                game. This project gave me valuable insights into how to
+                <strong>structure gameplay systems</strong> around AI, and how
+                to make smart trade-offs between performance and behavior. I
+                learned how important it is to scope your project
+                carefully—while I’m proud of what I built, I realized that if my
+                main goal was to specialize in AI, I could’ve chosen a system
+                with fewer distractions outside of the core logic.
+              </p>
+              <p>
+                That said, the experience of combining
+                <strong>GOAP planning</strong> with
+                <strong>influence-based movement</strong> and entity interaction
+                gave me a strong foundation for future AI systems. It helped me
+                grow both as a programmer and as a systems thinker.
+              </p>
+            </section>
+
+            <section>
+              <header><h2>The GOAP</h2></header>
               <header>
                 <h3>Planning the Best Action</h3>
               </header>
@@ -238,27 +372,37 @@
                 <h3>Terrain Example: Sheep Generation</h3>
               </header>
               <p>
-                This code generates the positions of terrain entities throughout the map while avoiding overlapping from previously positioned entities. This specific example is for <strong>sheep</strong>.
+                This code generates the positions of terrain entities throughout
+                the map while avoiding overlapping from previously positioned
+                entities. This specific example is for <strong>sheep</strong>.
               </p>
-              
+
               <h4>Mark Exclusion Zones:</h4>
               <p>
-                It loops through nearby entities and marks a <strong>grid radius</strong> around each one where sheep should not be placed.
+                It loops through nearby entities and marks a
+                <strong>grid radius</strong> around each one where sheep should
+                not be placed.
               </p>
-              
+
               <h4>Generate Possible Positions:</h4>
               <p>
-                It checks tiles around a <strong>start position</strong> within a set range (iterations), skipping some based on spacing rules (every 2nd, 3rd, or 5th tile) to control <strong>density</strong>.
+                It checks tiles around a <strong>start position</strong> within
+                a set range (iterations), skipping some based on spacing rules
+                (every 2nd, 3rd, or 5th tile) to control
+                <strong>density</strong>.
               </p>
-              
+
               <h4>Filter Valid Tiles:</h4>
               <p>
-                It ensures each position is inside <strong>map bounds</strong>, is <strong>walkable</strong>, and not inside an <strong>exclusion zone</strong>.
+                It ensures each position is inside <strong>map bounds</strong>,
+                is <strong>walkable</strong>, and not inside an
+                <strong>exclusion zone</strong>.
               </p>
-              
+
               <h4>Shuffle the Results:</h4>
               <p>
-                All valid positions are <strong>randomly shuffled</strong> to allow for non-patterned, natural placement.
+                All valid positions are <strong>randomly shuffled</strong> to
+                allow for non-patterned, natural placement.
               </p>
 
               <a class="image featured">

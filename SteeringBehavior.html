@@ -61,6 +61,23 @@
               </p>
 
             <section>
+
+              <header><h2>Struggles and What I Learned</h2></header>
+              <p>
+                This was the first time I implemented an <strong>AI system for a 3D game</strong>, which in itself was a challenge. To make things even more difficult, I decided to go beyond the assignment requirements and create <strong>flying enemies</strong> instead of just ground-based ones. That decision brought a whole new layer of complexity I hadn’t anticipated. One of the biggest struggles I faced was <strong>time</strong>. Since this was part of a school project, I couldn’t dedicate all my attention to the AI system—I also had to handle <strong>environmental design</strong>, <strong>navmesh generation</strong>, and other <strong>gameplay-related features</strong>. As a result, development often got put on hold or had to be squeezed into shorter sessions. 
+              </p>
+              <p>
+                Another challenge was ensuring that the game could handle a <strong>large number of active enemies</strong> at the same time. I wanted the player to face intense waves, but this pushed me to focus heavily on <strong>performance optimization</strong>. I eventually found that <strong>gridding the navmesh</strong> helped tremendously when managing access for over <strong>100 enemies in a single frame</strong>. It reduced lookup times and helped the AI run more smoothly.
+              </p>
+              <p>
+                Through this process, I learned a lot about the <strong>limitations and design considerations of flying AI</strong>. If I were to build something similar again, I would implement a <strong>full 3D grid</strong> instead of relying on steering toward targets and avoiding obstacles in 2D. While that simpler approach worked for this <strong>tower defense-style game</strong>, it didn’t handle every situation perfectly—especially when enemies risked getting stuck.
+              </p>
+              <p>
+                I also discovered the value of <strong>behavior trees</strong> for structuring enemy logic. They offered a <strong>clean and scalable</strong> way to organize actions and decisions. However, I underestimated the time needed to build a <strong>well-thought-out tree</strong>. In retrospect, I would’ve liked to explore more <strong>complex behavior flows</strong>, with additional decision layers and dynamic reactions built directly into the tree.
+              </p>
+              <p>
+                Despite the challenges, this project gave me a deeper understanding of how to build <strong>AI that performs well in real-time environments</strong>, especially under <strong>performance and time constraints</strong>.
+              </p>
               <header>
                 <h2>Steering Behaviors</h2>
               <a href="https://github.com/Hugonyberg/Portfolio/blob/main/Enemy/Steering/SteeringBehavior.h#L54" 
@@ -164,6 +181,7 @@
                     <a class="image featured">
                       <img src="videos/Enemy/GroundEnemyVisualisation_GIF.gif" alt="Ground Enemy Visualisation" />
                       <p><strong>Ground Enemy Logic in Action</strong></p>
+                      <p>Note: The model animates away from its true position, causing a visual mismatch with its actual coordinates.</p>
                     </a>
                   </article>
                   <article class="col-6 col-12-mobile special">
