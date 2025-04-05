@@ -177,6 +177,25 @@
                 appeared to explore their surroundings more naturally.
               </p>
 
+              <h3>Planner Limitations & Missed Opportunities</h3>
+              <p>
+                One thing I didn’t get around to improving was how the action
+                planner handles future resource gains. Right now, it only plans
+                based on the <strong>current world state</strong>. So if, for
+                example, three farmers are already out gathering food, the
+                planner doesn’t consider that upcoming food—it only reacts after
+                the world state has actually changed.
+              </p>
+              <p>
+                In hindsight, it would’ve been great to add a layer of
+                <strong>predictive planning</strong>. For instance, estimating
+                the chance of incoming resources based on whether a farmer is
+                carrying food back to base and not in danger. That way, the
+                planner could make smarter decisions without waiting for a full
+                update. Time constraints kept me from exploring it, but it's
+                something I’d definitely like to implement in future projects.
+              </p>
+
               <h3>Final Takeaways</h3>
               <p>
                 In the end, I had essentially created my own small simulation
