@@ -32,9 +32,29 @@
         <nav id="nav">
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="AIMenu.html">Game AI</a></li>
-            <li><a href="ToolsMenu.html">Game Design Tools</a></li>
-            <li><a href="OtherCode.html">Other Code</a></li>
+            <li>
+              <a href="AIMenu.html">Game AI</a>
+              <ul>
+                <li><a href="SteeringBehavior.html">3D Enemy AI</a></li>
+                <li><a href="GOAP.html">RTS-style AI</a></li>
+                <li><a href="StateMachine.html">State Machine AI</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="ToolsMenu.html">Game Design Tools</a>
+              <ul>
+                <li><a href="WaveManager.html">Wave Manager</a></li>
+                <li><a href="Navmesh.html">Navmesh Creation</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="OtherCode.html">Other Code</a>
+              <ul>
+                <li><a href="Raycasting.html">Screenspace Raycasting</a></li>
+                <li><a href="Collision2D.html">2D Collision</a></li>
+                <li><a href="PlayerMovement.html">Player Movement</a></li>
+              </ul>
+            </li>
             <li>
               <a href="#">Game Projects</a>
               <ul>
@@ -49,76 +69,113 @@
         </nav>
       </div>
 
-     <!-- Main -->
-<div class="wrapper style1">
-  <div class="container">
-    <div class="row gtr-200"></div>
-    <article id="main" class="special">
-      <header>
-        <p>
-          Player Class implementation in a 2D Elevated Grid World. Using
-          Screenspace Raycast for movement & aiming directions.
-        </p>
-      </header>
+      <!-- Main -->
+      <div class="wrapper style1">
+        <div class="container">
+          <div class="row gtr-200"></div>
+          <article id="main" class="special">
+            <header>
+              <p>
+                Player Class implementation in a 2D Elevated Grid World. Using
+                Screenspace Raycast for movement & aiming directions.
+              </p>
+            </header>
 
-      <div class="row">
-        <article class="col-6 col-12-mobile special">
-          <a class="image featured">
-            <img
-              src="videos/PlayerMovement/PlayerMovement1GIF.gif"
-              alt="Polymesh View"
-            />
-          </a>
-        </article>
+            <div class="row">
+              <article class="col-6 col-12-mobile special">
+                <a class="image featured">
+                  <img
+                    src="videos/PlayerMovement/PlayerMovement1GIF.gif"
+                    alt="Polymesh View"
+                  />
+                </a>
+              </article>
 
-        <article class="col-6 col-12-mobile special">
-          <a class="image featured">
-            <img
-              src="videos/PlayerMovement/PlayerMovement2GIF.gif"
-              alt="Detailed Navmesh View"
-            />
-          </a>
-        </article>
-      </div>
+              <article class="col-6 col-12-mobile special">
+                <a class="image featured">
+                  <img
+                    src="videos/PlayerMovement/PlayerMovement2GIF.gif"
+                    alt="Detailed Navmesh View"
+                  />
+                </a>
+              </article>
+            </div>
 
-      <section>
-        <p>
-          For this project, I handled the full player gameplay logic. The movement system is built around directional inputs using WASD, supporting both primary directions and diagonals (e.g., top-right, bottom-left). Aiming is handled using a <strong>screenspace raycasting system</strong>, which I implemented first for a perspective camera and later adapted to orthographic when the project changed direction.
-        </p>
+            <section>
+              <p>
+                For this project, I handled the full player gameplay logic. The
+                movement system is built around directional inputs using WASD,
+                supporting both primary directions and diagonals (e.g.,
+                top-right, bottom-left). Aiming is handled using a
+                <strong>screenspace raycasting system</strong>, which I
+                implemented first for a perspective camera and later adapted to
+                orthographic when the project changed direction.
+              </p>
 
-        <p>
-          I created a <strong>Projectile Pool</strong> for performance-efficient ability casting. The player has four weapon types, each managed through an <strong>enum-based state system</strong> to switch behavior and cooldowns cleanly. Ability inputs are context-aware — for example, if the player is rolling, they can't shoot or switch directions until the animation completes.
-        </p>
-        <a href="https://github.com/Hugonyberg/Portfolio/blob/main/Enemy/Projectile/ProjectilePool.h#L2" 
-        target="_blank" 
-        style="display: inline-flex; align-items: center; gap: 8px; padding: 4px 10px; background-color: #ff7b00; color: #000000; text-decoration: none; border-radius: 6px; font-family: sans-serif;">
-       <svg height="20" width="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-         <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 
+              <p>
+                I created a <strong>Projectile Pool</strong> for
+                performance-efficient ability casting. The player has four
+                weapon types, each managed through an
+                <strong>enum-based state system</strong> to switch behavior and
+                cooldowns cleanly. Ability inputs are context-aware — for
+                example, if the player is rolling, they can't shoot or switch
+                directions until the animation completes.
+              </p>
+              <a
+                href="https://github.com/Hugonyberg/Portfolio/blob/main/Enemy/Projectile/ProjectilePool.h#L2"
+                target="_blank"
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 8px;
+                  padding: 4px 10px;
+                  background-color: #ff7b00;
+                  color: #000000;
+                  text-decoration: none;
+                  border-radius: 6px;
+                  font-family: sans-serif;
+                "
+              >
+                <svg
+                  height="20"
+                  width="20"
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 
                   0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52
                   -.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2
                   -3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.11 0 0 .67-.21 2.2
                   .82a7.64 7.64 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16
                   1.91.08 2.11.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54
-                  1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-       </svg>
-       View Projectile Pool on GitHub
-     </a><br><br>
+                  1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                  />
+                </svg>
+                View Projectile Pool on GitHub </a
+              ><br /><br />
 
-        <h3>Key Features Implemented:</h3>
-        <ul>
-          <li>Screenspace raycasting (Perspective & Orthographic support)</li>
-          <li>8-direction WASD movement with diagonal support</li>
-          <li>Projectile Pool system for ability reuse</li>
-          <li>Weapon switching via enum state handling</li>
-          <li>Cooldown timers for actions and abilities</li>
-          <li>Input-locking during specific player states (rolling, shooting etc)</li>
-        </ul>
-      </section>
+              <h3>Key Features Implemented:</h3>
+              <ul>
+                <li>
+                  Screenspace raycasting (Perspective & Orthographic support)
+                </li>
+                <li>8-direction WASD movement with diagonal support</li>
+                <li>Projectile Pool system for ability reuse</li>
+                <li>Weapon switching via enum state handling</li>
+                <li>Cooldown timers for actions and abilities</li>
+                <li>
+                  Input-locking during specific player states (rolling, shooting
+                  etc)
+                </li>
+              </ul>
+            </section>
 
-      <button onclick="history.back()">Go Back</button>
-    </article>
-  </div>
-</div>
+            <button onclick="history.back()">Go Back</button>
+          </article>
+        </div>
+      </div>
 
       <!-- Footer -->
       <div id="footer">

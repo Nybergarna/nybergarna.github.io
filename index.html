@@ -49,9 +49,29 @@
         <nav id="nav">
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="AIMenu.html">Game AI</a></li>
-            <li><a href="ToolsMenu.html">Game Design Tools</a></li>
-            <li><a href="OtherCode.html">Other Code</a></li>
+            <li>
+              <a href="AIMenu.html">Game AI</a>
+              <ul>
+                <li><a href="SteeringBehavior.html">3D Enemy AI</a></li>
+                <li><a href="GOAP.html">RTS-style AI</a></li>
+                <li><a href="StateMachine.html">State Machine AI</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="ToolsMenu.html">Game Design Tools</a>
+              <ul>
+                <li><a href="WaveManager.html">Wave Manager</a></li>
+                <li><a href="Navmesh.html">Navmesh Creation</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="OtherCode.html">Other Code</a>
+              <ul>
+                <li><a href="Raycasting.html">Screenspace Raycasting</a></li>
+                <li><a href="Collision2D.html">2D Collision</a></li>
+                <li><a href="PlayerMovement.html">Player Movement</a></li>
+              </ul>
+            </li>
             <li>
               <a href="#">Game Projects</a>
               <ul>
@@ -65,16 +85,6 @@
           </ul>
         </nav>
       </div>
-
-      <!-- Banner
-      <section id="banner">
-        <header>
-          <h2><strong>Code</strong>.</h2>
-          <p>
-            <a>Paulina är bök</a>. 
-          </p>
-        </header>
-      </section> -->
 
       <!-- Carousel -->
       <section id="banner" class="carousel">
@@ -172,19 +182,17 @@
             <p>Player Movement & Combat on 2D Grid in a 3D World.</p>
           </article>
         </div>
-        <p>&nbsp;<strong>Highlights marked Orange</strong></p>
       </section>
 
       <!-- Main -->
       <div class="wrapper style2">
         <article id="main" class="container special">
           <header>
-            <h2><a href="GOAP.html">Specialisering</a></h2>
+            <h2><a href="GOAP.html"> RTS-style AI</a></h2>
             <h3>
               <strong>8-Week Timeline</strong>
             </h3>
             <p>
-              RTS-style AI using
               <strong>Goal-Oriented Action Planner (GOAP)</strong>
             </p>
           </header>
@@ -211,82 +219,141 @@
           </div>
 
           <p>
-            For my specialisation, I developed an RTS-style AI inspired by
-            <strong>Age of Empires</strong>. The core system revolves around a
-            base controlled by a custom
-            <strong>Goal-Oriented Action Planning (GOAP)</strong> system,
-            supported by a <strong>heuristic-driven ActionPlanner</strong>. This
-            planner evaluates potential actions up to a fixed depth, ignoring
-            paths that exceed the estimated cost to a goal state.
+            For my 8-Week TGA school project, I built an RTS-style AI inspired
+            by
+            <strong>Age of Empires</strong>. The AI is driven by a
+            <strong>GOAP system</strong> and a custom planner that picks the
+            most effective actions based on the current world state.
           </p>
 
           <p>
-            The base uses world state data—resources, unit counts, and
-            population cap—to dynamically determine optimal action sequences.
-            Each action is weighted based on contextual value, allowing the
-            system to prioritize high-impact decisions with lower heuristic
-            costs.
+            Farmers follow these plans using
+            <strong>A*-influenced movement</strong>, avoiding enemies while
+            gathering resources. Soldiers respond to
+            <strong>enemy presence</strong> or patrol less protected areas.
+            Goblins wander randomly, targeting low-defense spots.
           </p>
 
           <p>
-            Idle farmer units receive these plans and carry them out using
-            <strong>A*-influenced steering</strong>. Rather than full
-            pathfinding, they evaluate available grid steps based on distance to
-            target and <strong>enemy heat influence</strong>.
-          </p>
-
-          <p>
-            Soldiers use a similar method, gravitating toward areas of high
-            enemy presence without overlapping allied units. In the absence of
-            enemies, they shift toward the edges of farmer influence, creating
-            an <strong>emergent patrol behavior</strong>.
-          </p>
-
-          <p>
-            Goblins exhibit randomized wandering by selecting steps from a
-            shuffled list and avoiding previously visited tiles. They prefer
-            tiles with low soldier presence, or alternatively, high farmer
-            influence—resulting in dynamic, unpredictable movement patterns.
-          </p>
-
-          <p>
-            The game world is <strong>grid-based</strong>, with procedurally
-            placed resources and a centrally spawned base. This procedural
-            layout ensures varied outcomes in each simulation run.
-          </p>
-
-          <p>
-            The architecture uses a simple <strong>entity system</strong> where
-            all actors and objects inherit from a common base class. Rendering
-            is optimized via <strong>sprite batching</strong>, and UI elements
-            are included to provide visual clarity and feedback.
+            The world is <strong>grid-based</strong> with procedurally placed
+            resources, and all units share a simple
+            <strong>entity system</strong>. Visuals are handled with
+            <strong>sprite batching</strong> and a clean UI.
           </p>
 
           <a href="GOAP.html" class="button">READ MORE</a>
           <br />
+        </article>
+        <article id="main" class="container special">
           <header>
-            <h3>
-              <a href="GOAP.html"
-                ><strong>Longer Real-Time Simulation</strong></a
-              >
-            </h3>
+            <h2><a href="SteeringBehavior.html">Enemy AI & Steering</a></h2>
+            <h4>
+              <strong>Steering Behaviors, Behavior Tree and Pooling</strong>
+            </h4>
           </header>
-          <div style="padding: 56.25% 0 0 0; position: relative">
-            <iframe
-              src="https://player.vimeo.com/video/1071326162?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-              frameborder="0"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-              style="
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-              "
-              title="Specialisering Simulation"
-            ></iframe>
+
+          <div class="row">
+            <article class="col-6 col-12-mobile special">
+              <a class="image featured">
+                <img
+                  src="videos/Enemy/KamikazeSwarmLargeGIF.gif"
+                  alt="Enemy Steering Overview"
+                />
+                <p><strong>Real-Time Steering</strong></p>
+              </a>
+            </article>
+
+            <article class="col-6 col-12-mobile special">
+              <a class="image featured">
+                <img
+                  src="videos/Enemy/ShooterDrillKilling_GIF.gif"
+                  alt="Formation and Flee"
+                />
+                <p><strong>Dynamic Group Behavior</strong></p>
+              </a>
+            </article>
           </div>
-          <script src="https://player.vimeo.com/api/player.js"></script>
+
+          <p>
+            For this a TGA project, I implemented enemy AI using
+            <strong>steering behaviors</strong> and a shared
+            <strong>blackboard system</strong>. Each enemy type responds to its
+            surroundings through
+            <strong>Seek, Arrival, Separation, Spread</strong> and
+            <strong>Object Avoidance</strong>.
+          </p>
+
+          <p>
+            Movement and behavior are reactive and data-driven. Enemies stay in
+            formation, avoid obstacles, and use
+            <strong>behavior trees</strong> for decicionmaking.
+          </p>
+
+          <p>
+            The system is highly tweakable via <strong>ImGui controls</strong>,
+            allowing full live adjustment of enemy speed, mass, and force, plus
+            preset ray layouts for precise steering response.
+          </p>
+
+          <a href="SteeringBehavior.html" class="button">READ MORE</a>
+          <br />
+        </article>
+
+        <article id="main" class="container special">
+          <header>
+            <h2><a href="Navmesh.html">Navmesh Creation</a></h2>
+            <h4>
+              <strong>Recast Integration, Grid Mapping, and Rendering</strong>
+            </h4>
+          </header>
+
+          <div class="row">
+            <article class="col-6 col-12-mobile special">
+              <a class="image featured">
+                <img
+                  src="videos/Navmesh/ShowLiveTweakableGIF.gif"
+                  alt="Navmesh Generation"
+                />
+                <p>
+                  <strong>Navmesh Creation</strong> (Live tweaking to improve
+                  the generated mesh)
+                </p>
+              </a>
+            </article>
+
+            <article class="col-6 col-12-mobile special">
+              <a class="image featured">
+                <img src="videos/Navmesh/NavmeshGridGIF.gif" alt="Grid View" />
+                <p><strong>Gridded Navigation</strong></p>
+              </a>
+            </article>
+          </div>
+
+          <p>
+            This system uses <strong>Recast Navigation</strong> to automatically
+            generate walkable areas based on level geometry, receiving a
+            <strong>Detailed</strong> & a less detailed
+            <strong>Polymesh</strong> Navmesh. The result is a clean and
+            optimized <strong>polygon mesh</strong> used for real-time
+            pathfinding.
+          </p>
+
+          <p>
+            I convert Recast data into a <strong>custom grid format</strong>,
+            enabling fast lookup of node centers and connections. This grid
+            structure is also used by AI behaviors like
+            <strong>edge steering</strong> to keep enemies aligned.
+          </p>
+
+          <p>
+            The entire navmesh is <strong>rendered visually</strong>, showing
+            both geometry and node relationships. It's fully customizable to
+            support create the best suited mesh for the AI use cases and map
+            layouts.
+          </p>
+
+          <a href="Navmesh.html" class="button">READ MORE</a>
+          <br />
         </article>
       </div>
 

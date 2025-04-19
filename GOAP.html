@@ -24,7 +24,7 @@
         <!-- Inner -->
         <div class="inner">
           <header>
-            <h1><a href="index.html" id="logo">Specialisering</a></h1>
+            <h1><a href="index.html" id="logo">RTS-style AI</a></h1>
           </header>
         </div>
 
@@ -32,9 +32,29 @@
         <nav id="nav">
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="AIMenu.html">Game AI</a></li>
-            <li><a href="ToolsMenu.html">Game Design Tools</a></li>
-            <li><a href="OtherCode.html">Other Code</a></li>
+            <li>
+              <a href="AIMenu.html">Game AI</a>
+              <ul>
+                <li><a href="SteeringBehavior.html">3D Enemy AI</a></li>
+                <li><a href="GOAP.html">RTS-style AI</a></li>
+                <li><a href="StateMachine.html">State Machine AI</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="ToolsMenu.html">Game Design Tools</a>
+              <ul>
+                <li><a href="WaveManager.html">Wave Manager</a></li>
+                <li><a href="Navmesh.html">Navmesh Creation</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="OtherCode.html">Other Code</a>
+              <ul>
+                <li><a href="Raycasting.html">Screenspace Raycasting</a></li>
+                <li><a href="Collision2D.html">2D Collision</a></li>
+                <li><a href="PlayerMovement.html">Player Movement</a></li>
+              </ul>
+            </li>
             <li>
               <a href="#">Game Projects</a>
               <ul>
@@ -84,226 +104,120 @@
             <script src="https://player.vimeo.com/api/player.js"></script>
 
             <section>
-              <header><h2>Struggles and What I Learned</h2></header>
-              <h3>Finding the Right Focus</h3>
-              <p>
-                One of the first challenges I faced was deciding what part of
-                game AI I wanted to explore. I knew I wanted to work with
-                <strong>AI systems in games</strong>, but I struggled to find
-                something that felt both complex and meaningful. I initially
-                came across the
-                <strong>Iterative Deepening A*</strong> algorithm and was
-                fascinated by how it differs from regular A*—it uses
-                significantly <strong>less memory</strong>, which makes it a
-                powerful tool in large data spaces with many actions, paths, or
-                tasks. The idea of building an AI planner that could work in a
-                sea of data and still find the optimal goal path really appealed
-                to me.
-              </p>
-              <p>
-                However, the <strong>performance trade-offs</strong> became a
-                problem. The algorithm restarts its search whenever it exceeds
-                the current cost threshold, which added too much overhead for my
-                use case in a real-time game. I ended up modifying it, steering
-                the algorithm early on with a
-                <strong>manipulated cost function</strong> to find quicker paths
-                and skipping the repeated cutoff logic. This experience taught
-                me a lot about <strong>algorithm design</strong> and how even
-                small tweaks can drastically affect performance and behavior.
-              </p>
-
-              <h3>Creating the Game World</h3>
-              <p>
-                Because I decided to build an
-                <strong>RTS-style game</strong> around the GOAP system, I needed
-                assets that matched the idea. I found a free pixel art library
-                by
-                <style>
-                  a.styled-link {
-                    color: #1e90ff;
-                    text-decoration: none;
-                    border-bottom: 1px solid transparent;
-                    transition: all 0.2s ease-in-out;
-                  }
-
-                  a.styled-link:hover {
-                    border-bottom: 1px solid #1e90ff;
-                  }
-                </style>
-
-                <a
-                  href="https://pixelfrog-assets.itch.io/tiny-swords"
-                  target="_blank"
-                  class="styled-link"
-                >
-                  Pixel Frog </a
-                >, which was perfect for giving the project a stylized look. At
-                the same time, building this game involved more than just the
-                GOAP logic—I also had to handle
-                <strong>terrain generation</strong>,
-                <strong>rendering systems</strong>, and a range of behaviors
-                unrelated to my AI focus.
-              </p>
-              <p>
-                Thankfully, I managed to implement the action planner fairly
-                quickly. Once I had a working structure for
-                <strong>actions, goals, and costs</strong>, I had enough time to
-                expand the project. In many cases, I reused knowledge from
-                previous projects—like <strong>grids, pathfinding,</strong> and
-                <strong>procedural generation</strong>. But I also had to create
-                new systems from scratch, like a simple
-                <strong>entity inheritance system</strong> and rules for
-                <strong>synchronized behaviors</strong>.
-              </p>
-
-              <h3>AI Coordination</h3>
-              <p>
-                One of my favorite challenges was coordinating different AI
-                roles—<strong>farmers, guards,</strong> and
-                <strong>goblins</strong>. I wanted farmers to act based on the
-                GOAP system, focusing on their tasks while avoiding danger.
-                Guards needed to protect them dynamically, while goblins would
-                target unprotected farmers. This led me to explore concepts like
-                <strong>influence maps</strong> and heat-based grid scoring.
-              </p>
-              <p>
-                I developed a system where each entity would scan nearby grid
-                tiles and sort them based on a combination of
-                <strong>influence values</strong> and
-                <strong>distance to goal</strong>. This created more believable
-                movement and less rigid behavior. It also had a positive impact
-                on <strong>performance</strong>, since not every agent had to
-                run a full pathfinding routine at every step. Instead, entities
-                appeared to explore their surroundings more naturally.
-              </p>
-
-              <h3>Planner Limitations & Missed Opportunities</h3>
-              <p>
-                One thing I didn’t get around to improving was how the action
-                planner handles future resource gains. Right now, it only plans
-                based on the <strong>current world state</strong>. So if, for
-                example, three farmers are already out gathering food, the
-                planner doesn’t consider that upcoming food—it only reacts after
-                the world state has actually changed.
-              </p>
-              <p>
-                In hindsight, it would’ve been great to add a layer of
-                <strong>predictive planning</strong>. For instance, estimating
-                the chance of incoming resources based on whether a farmer is
-                carrying food back to base and not in danger. That way, the
-                planner could make smarter decisions without waiting for a full
-                update. Time constraints kept me from exploring it, but it's
-                something I’d definitely like to implement in future projects.
-              </p>
-
-              <h3>Final Takeaways</h3>
-              <p>
-                In the end, I had essentially created my own small simulation
-                game. This project gave me valuable insights into how to
-                <strong>structure gameplay systems</strong> around AI, and how
-                to make smart trade-offs between performance and behavior. I
-                learned how important it is to scope your project
-                carefully—while I’m proud of what I built, I realized that if my
-                main goal was to specialize in AI, I could’ve chosen a system
-                with fewer distractions outside of the core logic.
-              </p>
-              <p>
-                That said, the experience of combining
-                <strong>GOAP planning</strong> with
-                <strong>influence-based movement</strong> and entity interaction
-                gave me a strong foundation for future AI systems. It helped me
-                grow both as a programmer and as a systems thinker.
-              </p>
-            </section>
-
-            <section>
               <header><h2>The GOAP</h2></header>
-              <header>
-                <h3>Planning the Best Action</h3>
-              </header>
-              <p>
-                The <strong>FastPlanAction</strong> function is the entry point
-                of the AI’s action planning. It takes in the current
-                <strong>WorldModel</strong> and a <strong>Goal</strong>, then
-                estimates the cost to reach the goal using a heuristic. Based on
-                this estimate, it searches for the most efficient action by
-                calling <strong>DoFastDepthFirst</strong>, which explores
-                possible action sequences up to a defined depth. If a valid plan
-                is found within the cost limit, it returns the best action. If
-                not, it defaults to an idle action.
-              </p>
-              <p>
-                To keep this planner running every frame or very often, the
-                depth has to be quite shallow.
-              </p>
+              <div class="row">
+                <!-- Left Column: Text -->
+                <div class="col-6 col-12-mobile">
+                  <section>
+                    <header>
+                      <h3>Planning the Best Action</h3>
+                    </header>
+                    <p>
+                      The <strong>FastPlanAction</strong> function is the entry
+                      point of the AI’s action planning. It takes in the current
+                      <strong>WorldModel</strong> and a <strong>Goal</strong>,
+                      then estimates the cost to reach the goal using a
+                      heuristic. Based on this estimate, it searches for the
+                      most efficient action by calling
+                      <strong>DoFastDepthFirst</strong>, which explores possible
+                      action sequences up to a defined depth. If a valid plan is
+                      found within the cost limit, it returns the best action.
+                      If not, it defaults to an idle action.
+                    </p>
+                    <p>
+                      To keep this planner running every frame or very often,
+                      the depth has to be quite shallow.
+                    </p>
 
-              <h3>Inputs:</h3>
-              <p>
-                <strong>World Model:</strong> The current state of the world,
-                including resources, units, etc.<br />
-                <strong>Goal:</strong> The desired end state the AI is trying to
-                reach.<br />
-                <strong>Transposition Table:</strong> A hash storage for already
-                visited states.<br />
-                <strong>Heuristic:</strong> A cost calculating class.<br />
-                <strong>Cutoff:</strong> Current estimated cost to goal.
-              </p>
+                    <h3>Inputs:</h3>
+                    <p>
+                      <strong>World Model:</strong> The current state of the
+                      world, including resources, units, etc.<br />
+                      <strong>Goal:</strong> The desired end state the AI is
+                      trying to reach.<br />
+                      <strong>Transposition Table:</strong> A hash storage for
+                      already visited states.<br />
+                      <strong>Heuristic:</strong> A cost calculating class.<br />
+                      <strong>Cutoff:</strong> Current estimated cost to goal.
+                    </p>
 
-              <h3>Output:</h3>
-              <p>
-                The most <strong>optimal Action</strong> to take next based on
-                current conditions and the goal.
-              </p>
+                    <h3>Output:</h3>
+                    <p>
+                      The most <strong>optimal Action</strong> to take next
+                      based on current conditions and the goal.
+                    </p>
+                  </section>
+                </div>
 
-              <a class="image featured">
-                <img
-                  src="images/GOAP/FastPlanAction.PNG"
-                  alt="FastPlanAction Function"
-                />
-              </a>
+                <!-- Right Column: Image -->
+                <div class="col-6 col-12-mobile">
+                  <br />
+                  <span class="image fit">
+                    <img
+                      src="images/GOAP/FastPlanAction.PNG"
+                      alt="FastPlanAction Function"
+                    />
+                    <br />
+                    <a class="image featured">
+                      <img
+                        src="images/GOAP/Action_Example.PNG"
+                        alt="Action Example"
+                        style="
+                          max-width: 600px;
+                          max-height: 400px;
+                          width: 100%;
+                          height: auto;
+                        "
+                      />
+                      <h4><strong>Action example</strong></h4>
+                    </a>
+                  </span>
+                </div>
+              </div>
 
-              <h4>Action example:</h4>
-              <a class="image featured">
-                <img
-                  src="images/GOAP/Action_Example.PNG"
-                  alt="Action Example"
-                  style="
-                    max-width: 600px;
-                    max-height: 400px;
-                    width: 100%;
-                    height: auto;
-                  "
-                />
-              </a>
+              <div class="row">
+                <!-- Left Column: Text -->
+                <div class="col-6 col-12-mobile">
+                  <section>
+                    <header>
+                      <h3>Heuristic-Guided Action Search</h3>
+                    </header>
+                    <p>
+                      <strong>DoFastDepthFirst</strong> performs a depth-limited
+                      search through possible actions, guided by a heuristic. At
+                      each depth level, it evaluates available actions,
+                      simulates the results, and calculates the cost to reach
+                      the goal. Actions that exceed the given cutoff are ignored
+                      to keep the plan efficient. A
+                      <strong>transposition table</strong>
+                      is used to skip already visited states, preventing
+                      redundant checks. The function returns the best
+                      alternative cost and the first action in the most
+                      promising sequence.
+                    </p>
 
-              <header>
-                <h3>Heuristic-Guided Action Search</h3>
-              </header>
-              <p>
-                <strong>DoFastDepthFirst</strong> performs a depth-limited
-                search through possible actions, guided by a heuristic. At each
-                depth level, it evaluates available actions, simulates the
-                results, and calculates the cost to reach the goal. Actions that
-                exceed the given cutoff are ignored to keep the plan efficient.
-                A <strong>transposition table</strong> is used to skip already
-                visited states, preventing redundant checks. The function
-                returns the best alternative cost and the first action in the
-                most promising sequence.
-              </p>
+                    <h4>Purpose:</h4>
+                    <ul>
+                      <li>Explore action sequences up to a max depth.</li>
+                      <li>Simulate outcomes, prune expensive paths early.</li>
+                      <li>
+                        Return the most cost-effective action toward the goal.
+                      </li>
+                    </ul>
+                  </section>
+                </div>
 
-              <h4>Purpose:</h4>
-              <ul>
-                <li>Explore action sequences up to a max depth.</li>
-                <li>Simulate outcomes, prune expensive paths early.</li>
-                <li>Return the most cost-effective action toward the goal.</li>
-              </ul>
-
-              <a class="image featured">
-                <img
-                  src="images/GOAP/DepthFirst.PNG"
-                  alt="DoFastDepthFirst Search"
-                />
-              </a>
+                <!-- Right Column: Image -->
+                <div class="col-6 col-12-mobile">
+                  <br />
+                  <span class="image fit">
+                    <img
+                      src="images/GOAP/DepthFirst.PNG"
+                      alt="DoFastDepthFirst Search"
+                    />
+                  </span>
+                </div>
+              </div>
 
               <header>
                 <h3>Influence / Heat Map</h3>
@@ -342,96 +256,258 @@
                 />
               </a>
 
-              <header>
-                <h3>Movement Decisions Example: Soldier</h3>
-              </header>
-              <p>
-                This function determines how soldiers choose their next move
-                using the influence map. Other soldier-occupied tiles are
-                filtered out first.
-              </p>
+              <div class="row">
+                <!-- Left Column: Text -->
+                <div class="col-6 col-12-mobile">
+                  <section>
+                    <header>
+                      <h3>Movement Decisions Example: Soldier</h3>
+                    </header>
+                    <p>
+                      This function determines how soldiers choose their next
+                      move using the influence map. Other soldier-occupied tiles
+                      are filtered out first.
+                    </p>
 
-              <ul>
-                <li>
-                  <strong>1.</strong> If enemies are nearby, the soldier sorts
-                  possible moves by enemy influence, preferring the tile with
-                  the highest threat to engage.
-                </li>
-                <li>
-                  <strong>2.</strong> If no enemies are nearby, it looks for
-                  tiles with some farmer influence, then picks the one with the
-                  lowest farmer presence. This creates a border-patrol behavior,
-                  guarding less protected areas.
-                </li>
-                <li>
-                  <strong>3.</strong> If there’s no farmer influence at all, it
-                  moves toward the closest farmer to stay near important units.
-                </li>
-                <li>
-                  <strong>Fallback:</strong> If no farmers exist, it picks a
-                  random valid move.
-                </li>
-              </ul>
+                    <ul>
+                      <li>
+                        <strong>1.</strong> If enemies are nearby, the soldier
+                        sorts possible moves by enemy influence, preferring the
+                        tile with the highest threat to engage.
+                      </li>
+                      <li>
+                        <strong>2.</strong> If no enemies are nearby, it looks
+                        for tiles with some farmer influence, then picks the one
+                        with the lowest farmer presence. This creates a
+                        border-patrol behavior, guarding less protected areas.
+                      </li>
+                      <li>
+                        <strong>3.</strong> If there’s no farmer influence at
+                        all, it moves toward the closest farmer to stay near
+                        important units.
+                      </li>
+                      <li>
+                        <strong>Fallback:</strong> If no farmers exist, it picks
+                        a random valid move.
+                      </li>
+                    </ul>
 
-              <p>
-                This creates a movement pattern where soldiers act defensively,
-                prioritize threats, and naturally position themselves to protect
-                the perimeter of farmer positions while avoiding collisions with
-                other soldiers.
-              </p>
+                    <p>
+                      This creates a movement pattern where soldiers act
+                      defensively, prioritize threats, and naturally position
+                      themselves to protect the perimeter of farmer positions
+                      while avoiding collisions with other soldiers.
+                    </p>
+                  </section>
+                </div>
 
-              <a class="image featured">
-                <img
-                  src="images/GOAP/SoldierMovement.PNG"
-                  alt="Soldier Movement"
-                />
-              </a>
+                <!-- Right Column: Image -->
+                <div class="col-6 col-12-mobile">
+                  <span class="image fit">
+                    <img
+                      src="images/GOAP/SoldierMovement.PNG"
+                      alt="Soldier Movement"
+                    />
+                  </span>
+                </div>
+              </div>
+              <br />
+              <div class="row">
+                <!-- Left Column: Text -->
+                <div class="col-6 col-12-mobile">
+                  <section>
+                    <header>
+                      <h3>Terrain Example: Sheep Generation</h3>
+                    </header>
+                    <p>
+                      This code generates the positions of terrain entities
+                      throughout the map while avoiding overlapping from
+                      previously positioned entities. This specific example is
+                      for <strong>sheep</strong>.
+                    </p>
 
-              <header>
-                <h3>Terrain Example: Sheep Generation</h3>
-              </header>
-              <p>
-                This code generates the positions of terrain entities throughout
-                the map while avoiding overlapping from previously positioned
-                entities. This specific example is for <strong>sheep</strong>.
-              </p>
+                    <h4>Mark Exclusion Zones:</h4>
+                    <p>
+                      It loops through nearby entities and marks a
+                      <strong>grid radius</strong> around each one where sheep
+                      should not be placed.
+                    </p>
 
-              <h4>Mark Exclusion Zones:</h4>
-              <p>
-                It loops through nearby entities and marks a
-                <strong>grid radius</strong> around each one where sheep should
-                not be placed.
-              </p>
+                    <h4>Generate Possible Positions:</h4>
+                    <p>
+                      It checks tiles around a
+                      <strong>start position</strong> within a set range
+                      (iterations), skipping some based on spacing rules (every
+                      2nd, 3rd, or 5th tile) to control
+                      <strong>density</strong>.
+                    </p>
 
-              <h4>Generate Possible Positions:</h4>
-              <p>
-                It checks tiles around a <strong>start position</strong> within
-                a set range (iterations), skipping some based on spacing rules
-                (every 2nd, 3rd, or 5th tile) to control
-                <strong>density</strong>.
-              </p>
+                    <h4>Filter Valid Tiles:</h4>
+                    <p>
+                      It ensures each position is inside
+                      <strong>map bounds</strong>, is <strong>walkable</strong>,
+                      and not inside an <strong>exclusion zone</strong>.
+                    </p>
 
-              <h4>Filter Valid Tiles:</h4>
-              <p>
-                It ensures each position is inside <strong>map bounds</strong>,
-                is <strong>walkable</strong>, and not inside an
-                <strong>exclusion zone</strong>.
-              </p>
+                    <h4>Shuffle the Results:</h4>
+                    <p>
+                      All valid positions are
+                      <strong>randomly shuffled</strong> to allow for
+                      non-patterned, natural placement.
+                    </p>
+                  </section>
+                </div>
 
-              <h4>Shuffle the Results:</h4>
-              <p>
-                All valid positions are <strong>randomly shuffled</strong> to
-                allow for non-patterned, natural placement.
-              </p>
-
-              <a class="image featured">
-                <img
-                  src="images/GOAP/GeneratedTerrain.PNG"
-                  alt="Generated Sheep Positions"
-                />
-              </a>
+                <!-- Right Column: Image -->
+                <div class="col-6 col-12-mobile">
+                  <span class="image fit">
+                    <img
+                      src="images/GOAP/GeneratedTerrain.PNG"
+                      alt="Generated Sheep Positions"
+                    />
+                  </span>
+                </div>
+              </div>
 
               <br />
+              <section>
+                <header><h2>Struggles and What I Learned</h2></header>
+                <h3>Finding the Right Focus</h3>
+                <p>
+                  One of the first challenges I faced was deciding what part of
+                  game AI I wanted to explore. I knew I wanted to work with
+                  <strong>AI systems in games</strong>, but I struggled to find
+                  something that felt both complex and meaningful. I initially
+                  came across the
+                  <strong>Iterative Deepening A*</strong> algorithm and was
+                  fascinated by how it differs from regular A*—it uses
+                  significantly <strong>less memory</strong>, which makes it a
+                  powerful tool in large data spaces with many actions, paths,
+                  or tasks. The idea of building an AI planner that could work
+                  in a sea of data and still find the optimal goal path really
+                  appealed to me.
+                </p>
+                <p>
+                  However, the <strong>performance trade-offs</strong> became a
+                  problem. The algorithm restarts its search whenever it exceeds
+                  the current cost threshold, which added too much overhead for
+                  my use case in a real-time game. I ended up modifying it,
+                  steering the algorithm early on with a
+                  <strong>manipulated cost function</strong> to find quicker
+                  paths and skipping the repeated cutoff logic. This experience
+                  taught me a lot about <strong>algorithm design</strong> and
+                  how even small tweaks can drastically affect performance and
+                  behavior.
+                </p>
+
+                <h3>Creating the Game World</h3>
+                <p>
+                  Because I decided to build an
+                  <strong>RTS-style game</strong> around the GOAP system, I
+                  needed assets that matched the idea. I found a free pixel art
+                  library by
+                  <style>
+                    a.styled-link {
+                      color: #1e90ff;
+                      text-decoration: none;
+                      border-bottom: 1px solid transparent;
+                      transition: all 0.2s ease-in-out;
+                    }
+
+                    a.styled-link:hover {
+                      border-bottom: 1px solid #1e90ff;
+                    }
+                  </style>
+
+                  <a
+                    href="https://pixelfrog-assets.itch.io/tiny-swords"
+                    target="_blank"
+                    class="styled-link"
+                  >
+                    Pixel Frog </a
+                  >, which was perfect for giving the project a stylized look.
+                  At the same time, building this game involved more than just
+                  the GOAP logic—I also had to handle
+                  <strong>terrain generation</strong>,
+                  <strong>rendering systems</strong>, and a range of behaviors
+                  unrelated to my AI focus.
+                </p>
+                <p>
+                  Thankfully, I managed to implement the action planner fairly
+                  quickly. Once I had a working structure for
+                  <strong>actions, goals, and costs</strong>, I had enough time
+                  to expand the project. In many cases, I reused knowledge from
+                  previous projects—like
+                  <strong>grids, pathfinding,</strong> and
+                  <strong>procedural generation</strong>. But I also had to
+                  create new systems from scratch, like a simple
+                  <strong>entity inheritance system</strong> and rules for
+                  <strong>synchronized behaviors</strong>.
+                </p>
+
+                <h3>AI Coordination</h3>
+                <p>
+                  One of my favorite challenges was coordinating different AI
+                  roles—<strong>farmers, guards,</strong> and
+                  <strong>goblins</strong>. I wanted farmers to act based on the
+                  GOAP system, focusing on their tasks while avoiding danger.
+                  Guards needed to protect them dynamically, while goblins would
+                  target unprotected farmers. This led me to explore concepts
+                  like <strong>influence maps</strong> and heat-based grid
+                  scoring.
+                </p>
+                <p>
+                  I developed a system where each entity would scan nearby grid
+                  tiles and sort them based on a combination of
+                  <strong>influence values</strong> and
+                  <strong>distance to goal</strong>. This created more
+                  believable movement and less rigid behavior. It also had a
+                  positive impact on <strong>performance</strong>, since not
+                  every agent had to run a full pathfinding routine at every
+                  step. Instead, entities appeared to explore their surroundings
+                  more naturally.
+                </p>
+
+                <h3>Planner Limitations & Missed Opportunities</h3>
+                <p>
+                  One thing I didn’t get around to improving was how the action
+                  planner handles future resource gains. Right now, it only
+                  plans based on the <strong>current world state</strong>. So
+                  if, for example, three farmers are already out gathering food,
+                  the planner doesn’t consider that upcoming food—it only reacts
+                  after the world state has actually changed.
+                </p>
+                <p>
+                  In hindsight, it would’ve been great to add a layer of
+                  <strong>predictive planning</strong>. For instance, estimating
+                  the chance of incoming resources based on whether a farmer is
+                  carrying food back to base and not in danger. That way, the
+                  planner could make smarter decisions without waiting for a
+                  full update. Time constraints kept me from exploring it, but
+                  it's something I’d definitely like to implement in future
+                  projects.
+                </p>
+
+                <h3>Final Takeaways</h3>
+                <p>
+                  In the end, I had essentially created my own small simulation
+                  game. This project gave me valuable insights into how to
+                  <strong>structure gameplay systems</strong> around AI, and how
+                  to make smart trade-offs between performance and behavior. I
+                  learned how important it is to scope your project
+                  carefully—while I’m proud of what I built, I realized that if
+                  my main goal was to specialize in AI, I could’ve chosen a
+                  system with fewer distractions outside of the core logic.
+                </p>
+                <p>
+                  That said, the experience of combining
+                  <strong>GOAP planning</strong> with
+                  <strong>influence-based movement</strong> and entity
+                  interaction gave me a strong foundation for future AI systems.
+                  It helped me grow both as a programmer and as a systems
+                  thinker.
+                </p>
+              </section>
               <button onclick="history.back()">Go Back</button>
             </section>
           </article>
