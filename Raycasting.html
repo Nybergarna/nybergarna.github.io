@@ -89,97 +89,115 @@
 
             <section>
               <header>
-                <h3>Explanation</h3>
+                <h3>Step-by-Step Explanation</h3>
               </header>
 
-              <p>
-                <span class="custom-size">
-                  <img
-                    src="images/Raycast/ModelToScreen.jpg"
-                    alt="Model To Screen Transform"
-                  />
-                </span>
-                <br />
-                What we need to do is the inverse of the standard transformation
-                from local space to screen space — following those steps in
-                reverse.
-              </p>
+              <div class="row">
+                <article class="col-6 col-12-mobile">
+                  <p>
+                    What we need to do is the inverse of the standard
+                    transformation from local space to screen space — following
+                    those steps in reverse.
+                  </p>
+                </article>
+                <article class="col-6 col-12-mobile">
+                  <a class="image featured">
+                    <img
+                      src="images/Raycast/ModelToScreen.jpg"
+                      alt="Model To Screen Transform"
+                    />
+                  </a>
+                </article>
+              </div>
 
-              <p>
-                <span class="custom-size">
-                  <img
-                    src="images/Raycast/NDCExplanation.jpg"
-                    alt="NDC Conversion"
-                  />
-                </span>
-                <br />
-                Firstly, we need the correct <strong>window size</strong> and
-                <strong>mouse position</strong>. We convert the mouse position
-                from screen space to
-                <strong>Normalized Device Coordinates (NDC)</strong>:
-              </p>
-              <ul>
-                <li>
-                  <strong>-1</strong> represents the left and bottom of the
-                  screen.
-                </li>
-                <li>
-                  <strong>1</strong> represents the right and top of the screen.
-                </li>
-              </ul>
-              <p>
-                The <strong>z-value</strong> is set to <code>1.0f</code>,
-                assuming the ray starts from the far plane in clip space.
-              </p>
+              <div class="row">
+                <article class="col-6 col-12-mobile">
+                  <p>
+                    Firstly, we need the correct
+                    <strong>window size</strong> and
+                    <strong>mouse position</strong>. We convert the mouse
+                    position from screen space to
+                    <strong>Normalized Device Coordinates (NDC)</strong>:
+                  </p>
+                  <ul>
+                    <li><strong>-1</strong> = left/bottom of the screen</li>
+                    <li><strong>1</strong> = right/top of the screen</li>
+                  </ul>
+                  <p>
+                    The <strong>Z-value</strong> is set to <code>1.0f</code>,
+                    assuming the ray starts from the far plane in clip space.
+                  </p>
+                </article>
+                <article class="col-6 col-12-mobile">
+                  <a class="image featured">
+                    <img
+                      src="images/Raycast/NDCExplanation.jpg"
+                      alt="NDC Conversion"
+                    />
+                  </a>
+                </article>
+              </div>
 
-              <p>
-                <span class="custom-size">
-                  <img
-                    src="images/Raycast/ProjectionMatrixExplanation.jpg"
-                    alt="Projection Matrix Inversion"
-                  />
-                </span>
-                <br />
-                We retrieve the active camera to get its
-                <strong>projection matrix</strong>. This matrix is then
-                <strong>inverted</strong> to transform our NDC coordinates into
-                view space. Multiplying
-                <code>ndc * invProjectionMatrix</code> gives us the ray
-                direction in view space.
-              </p>
+              <div class="row">
+                <article class="col-6 col-12-mobile">
+                  <p>
+                    We retrieve the active camera to get its
+                    <strong>projection matrix</strong>. This matrix is then
+                    <strong>inverted</strong> to transform our NDC coordinates
+                    into view space. Multiplying
+                    <code>ndc * invProjectionMatrix</code> gives us the ray
+                    direction in view space.
+                  </p>
+                  <p>
+                    Since this uses homogeneous coordinates, we divide by the
+                    <code>w</code>-component to normalize the result.
+                  </p>
+                </article>
+                <article class="col-6 col-12-mobile">
+                  <a class="image featured">
+                    <img
+                      src="images/Raycast/ProjectionMatrixExplanation.jpg"
+                      alt="Projection Matrix Inversion"
+                    />
+                  </a>
+                </article>
+              </div>
 
-              <p>
-                Since the transformation uses homogeneous coordinates, we divide
-                by the <code>w</code>-component to normalize the result.
-              </p>
+              <div class="row">
+                <article class="col-6 col-12-mobile">
+                  <p>
+                    Next, we use the <strong>inverse view matrix</strong> from
+                    the camera to convert the ray from view space to
+                    <strong>world space</strong>. The resulting vector is a 4D
+                    position, but we only use its x, y, z components.
+                  </p>
+                </article>
+                <article class="col-6 col-12-mobile">
+                  <a class="image featured">
+                    <img
+                      src="images/Raycast/ToWorldSpaceExplanation.jpg"
+                      alt="To World Space"
+                    />
+                  </a>
+                </article>
+              </div>
 
-              <p>
-                <span class="custom-size">
-                  <img
-                    src="images/Raycast/ToWorldSpaceExplanation.jpg"
-                    alt="To World Space"
-                  />
-                </span>
-                <br />
-                Next, we use the <strong>inverse view matrix</strong> from the
-                camera to convert the ray from view space to
-                <strong>world space</strong>. The resulting vector is a 4D
-                position, but we only use its 3D components (x, y, z).
-              </p>
-
-              <p>
-                The <strong>origin of the ray</strong> is the camera's
-                position.<br />
-                The <strong>direction</strong> is calculated by subtracting the
-                camera position from the transformed world-space ray position
-                and then normalizing the result.
-              </p>
-
-              <p>
-                Once this is retrieved, we can use it to
-                <strong>raycast into the world</strong>.
-              </p>
-
+              <div class="row">
+                <article class="col-6 col-12-mobile">
+                  <p>
+                    The <strong>origin</strong> of the ray is the camera's
+                    position.<br />
+                    The <strong>direction</strong> is calculated by subtracting
+                    the camera position from the transformed world-space ray
+                    position and then normalizing the result.
+                  </p>
+                  <p>
+                    Once this is retrieved, we can use it to
+                    <strong>raycast into the world</strong>.
+                  </p>
+                </article>
+              </div>
+              <br />
               <div class="row">
                 <article class="col-4 col-12-mobile special">
                   <header>
@@ -188,13 +206,13 @@
                         >View it in action in my Navmesh tool</a
                       >
                     </h3>
-                    <a href="Navmesh.html" class="image featured">
-                      <img
-                        src="images/NavmeshLogo.jpg"
-                        alt="Navmesh Tool Preview"
-                      />
-                    </a>
                   </header>
+                  <a href="Navmesh.html" class="image featured">
+                    <img
+                      src="images/NavmeshLogo.jpg"
+                      alt="Navmesh Tool Preview"
+                    />
+                  </a>
                 </article>
               </div>
             </section>
