@@ -1,0 +1,14 @@
+Hej Axolot,
+
+Jag är tillgänglig för LIA från och med hösten 2025. Under min tid på The Game Assembly har jag framför allt programmerat i C++, både i skolans egen motor och i vår egenbyggda engine. Jag har även erfarenhet av Unity och har på senare tid utvecklat AI-komponenter i flera spelprojekt – något som har väckt mitt intresse för gameplay-programmering.
+
+Som spelare älskar jag survival-spel som Raft, och det skulle vara otroligt roligt att få vara med och utveckla liknande titlar hos er. Jag är stark i problemlösning, van vid att samarbeta i team efter flera års arbete i olika projekt, och jag tar snabbt till mig nya verktyg och tekniker.
+
+Här hittar ni min portfolio: [https://hugonyberg.github.io/]
+
+Jag ser fram emot att höra mer om era projekt och diskutera hur jag kan bidra till ert team.
+
+Allt gott,
+Hugo Nyberg
+karlhugo.nyberg@gmail.com
++46727433650
